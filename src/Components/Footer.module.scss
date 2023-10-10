@@ -1,0 +1,88 @@
+@use "../styles/GlobalVariables.module.scss" as gvars;
+
+.FooterWrapper {
+  background: black;
+
+  width: 100%;
+  color: white;
+  text-align: left;
+
+  .innerContainer {
+    @include gvars.laptop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
+  }
+
+  .address {
+    order: 1;
+    margin-bottom: 3em;
+    @include gvars.laptop {
+      margin-bottom: 2em;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      li {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+  .emailPhone {
+    order: 3;
+    margin-bottom: 3em;
+    @include gvars.laptop {
+      margin-bottom: 0;
+    }
+    > div {
+      margin-bottom: 1em;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+    img {
+      width: 1.8em;
+      margin-right: 0.8em;
+    }
+    img,
+    span {
+      vertical-align: middle;
+    }
+  }
+
+  .socialIconsContainer {
+    order: 2;
+    margin-bottom: 3em;
+    @include gvars.laptop {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+    a {
+      cursor: pointer;
+    }
+    img {
+      width: 5em;
+      margin-right: 1em;
+      display: inline-block;
+    }
+  }
+
+  .copyright {
+    @include gvars.laptop {
+      display: flex;
+      justify-content: flex-end;
+      text-align: right;
+      margin-bottom: 0;
+    }
+    order: 4;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    line-height: 1.8em;
+  }
+}

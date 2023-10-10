@@ -1,0 +1,73 @@
+@use "../styles/GlobalVariables.module.scss" as gvars;
+
+.ConactFormWrapper {
+  width: 100%; //change this to your liking
+
+  input,
+  textarea {
+    border-radius: 0.5em;
+    border: 1px solid black;
+    background: transparent;
+    padding: 1.5em 1em;
+    resize: none;
+    width: 100%;
+    font-family: "Sofia Pro";
+    &::placeholder {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  }
+  textarea {
+    height: 200px;
+  }
+
+  .buttonLoaderContainer {
+    position: relative;
+  }
+  button {
+    border-radius: 0.5em;
+    border: 1px solid black;
+    background: black;
+    color: white;
+    padding: 1.5em 1em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    resize: none;
+    width: 100%;
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+    opacity: 1;
+    transition: all 0.25s;
+    &.loading {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .loaderContainer {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+  }
+  .loader {
+    opacity: 0;
+    transition: opacity 0.5s;
+    &.loading {
+      opacity: 1;
+    }
+  }
+
+  .submissionMessageContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .inputContainer {
+    margin-bottom: 1.8rem;
+  }
+}
