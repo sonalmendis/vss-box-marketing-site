@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
+import * as GlobalVariables from "@/styles/GlobalVariables";
 import { Squash as Hamburger } from "hamburger-react"; // Animated hamburger icon#
 import styles from "./Header.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../public/img/logo.svg";
+import Logo from "../../public/img/logo-landscape.svg";
+import Button from "./Button";
+import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
+
+//images
+import telephoneIcon from "../../public/img/vectors/phone-icon.svg";
+import mailIcon from "../../public/img/vectors/mail-icon.svg";
 
 // The mobile menu container is both offset by a negative margin AND has 0 opacity, that way it is not visible and does not take up space on the page
 
@@ -14,20 +21,31 @@ const Header = () => {
   // Define state variable to keep track of the background opacity
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
 
-  // Define a function to toggle the menu state when the button is clicked
-  const handleMenuButtonClick = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const isDesktop = useMediaQuery({
+    query: `${GlobalVariables.device.laptop}`,
+  });
 
-    // Toggle the body overflow to prevent scrolling when the menu is open
-    isMenuOpen
-      ? (document.body.style.overflow = "visible")
-      : (document.body.style.overflow = "hidden");
+  // Define a function to toggle the menu state when the button is clicked
+  const handleMenuButtonClick = (el) => {
+    if (!isDesktop) {
+      if (isMenuOpen === true) {
+        setIsMenuOpen(false);
+        document.body.style.overflowY = "visible";
+      } else {
+        if (el.target && el.target.id === "header-logo") {
+          document.body.style.overflowY = "visible";
+        } else {
+          setIsMenuOpen(true);
+          document.body.style.overflowY = "hidden";
+        }
+      }
+    }
   };
 
   // Define the menu link tags as a function so each one gets an OnClick (to close the mobile menu when a link has been pressed)
-  function MobileLink({ href, children }) {
+  function MobileLink({ to, children }) {
     return (
-      <Link href={href} onClick={handleMenuButtonClick}>
+      <Link to={to} onClick={handleMenuButtonClick}>
         {children}
       </Link>
     );
@@ -39,11 +57,24 @@ const Header = () => {
       // Define a scroll event handler function to calculate the opacity based on the current scroll position
       const opacity = Math.min(window.pageYOffset / 100, 1);
       setBackgroundOpacity(opacity);
+
+      const headerLogo = document.getElementById("header-logo");
+      const header = document.getElementById("header");
+      const scrollPosition =
+        window.scrollY || document.documentElement.scrollTop;
+      if (scrollPosition > 5) {
+        // headerLogo.classList.add("mini");
+
+        header.classList.add(`${styles["headershow"]}`);
+      } else {
+        // headerLogo.classList.remove("mini");
+
+        header.classList.remove(`${styles["headershow"]}`);
+      }
     }
 
     // Add the scroll event listener and return a cleanup function to remove the listener when the component unmounts
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -51,32 +82,69 @@ const Header = () => {
 
   // Define a style object for the background with the calculated opacity
   const backgroundStyle = {
-    backgroundColor: `rgba(0, 0, 0, ${backgroundOpacity})`,
+    background: `#090516`,
   };
 
   // This function is used to offset the scroll to the contact form when the contact link is clicked, it uses the react-router-hash-link package
   const scrollWithOffset = (el) => {
-    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yCoordinate = el.getBoundingClientRect().top + window.scrollY;
+
     const yOffset = -100; // This is the offset, change this if you need to
     window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
-  };
 
+    /*
+EDIT: FOR SOME REASON THIS WORKS WITH THE STATIC BUILT SITE
+IDFK WHY BUT IT DOES SO I'M LEAVING IT AS IS
+
+    IF YOU NEED TO JUMP TO ANOTHER SECTION FROM ANOTHER PAGE USE BELOW
+    BUT NOTE THAT ITS BETTER TO HASH JUMP FROM WITHIN THE PAGE
+    i.e stick the Contact Form in to every page or have its own page
+
+    setTimeout(function () {
+      const yCoordinate = el.getBoundingClientRect().top + window.scrollY;
+      console.log(yCoordinate);
+      const yOffset = -100; // This is the offset, change this if you need to
+      window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+    }, 300);
+
+
+    For some reason, the small timeout is needed for the scroll to work properly 
+    when jumping to a section from another page
+    e.g when going to the "Contact Us" section from the pricing page
+
+    If you don't use the timeout, the scroll will jump only haflway down the page
+
+    Checking for the elements existance, the elements height, or the window height
+    don't see to work as they all return the same value as soon as the function
+    is fired vs a second later
+
+    Even on slow connections this timeout works so its purely a client-side thing
+    */
+  };
   return (
-    <div className={`${styles.HeaderWrapper} header`}>
+    <div className={`${styles.HeaderWrapper} header`} id="header">
       <div
         className={`${styles["top-container"]} ${
           isMenuOpen ? styles["open"] : ""
-        } vertical-padding-small`}
+        } `}
         style={backgroundStyle}
       >
         <div className={`outer-grid ${styles["inner-container"]}`}>
           <div className={`${styles["left-column"]}`}>
-            <Image className={`${styles.logo}`} src={Logo} alt="logo" />
+            <Link href="/" onClick={handleMenuButtonClick}>
+              <Image
+                className={`${styles.logo}`}
+                id="header-logo"
+                src={Logo}
+                alt="logo"
+              />
+            </Link>
           </div>
 
           <div className={`${styles["right-column"]}`}>
-            <Link href="/#contact-form">CONTACT</Link>
-            <Link href="/page2">Page 2</Link>
+            <Link href="/pricing">Pricing</Link>
+            <Link href="/#contact-form">Contact</Link>
+
             {/* Render the menu button*/}
 
             <div className={styles.hamburger}>
@@ -94,11 +162,46 @@ const Header = () => {
       <div
         className={`${styles["mobile-menu-container"]} ${
           isMenuOpen ? styles.open : ""
-        } outer-grid`}
+        }`}
       >
-        <MobileLink href="/">Home</MobileLink>
-        <MobileLink href="/#contact-form">CONTACT</MobileLink>
-        <MobileLink href="/page2">Page 2</MobileLink>
+        <div className={` ${styles["menu-inner-wrapper"]} outer-grid`}>
+          <div className={`${styles["individual-link-container"]}`}>
+            <Button
+              href="/pricing"
+              inline="true"
+              onClick={handleMenuButtonClick}
+            >
+              Pricing
+            </Button>
+          </div>
+          <div className={`${styles["individual-link-container"]}`}>
+            <Button
+              href="/#contact-form"
+              inline="true"
+              onClick={handleMenuButtonClick}
+            >
+              Contact
+            </Button>
+          </div>
+
+          <div
+            className={`${styles["contact-details-container"]} vertical-padding1 no-bottom`}
+          >
+            <div className={`${styles["inner-container"]}`}>
+              <div className={`${styles["col"]}`}>
+                {/* phone icon and number */}
+
+                <Image src={telephoneIcon} alt="Phone Icon" />
+                <span>077 954 0606</span>
+              </div>
+              <div className={`${styles["col"]}`}>
+                {/* email icon and email address */}
+                <Image src={mailIcon} alt="Phone Icon" />
+                <span>contact@vssbox.com</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

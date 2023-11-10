@@ -1,0 +1,178 @@
+@use "../styles/GlobalVariables.module.scss" as gvars;
+
+.IntroSection {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  .textContainer {
+    text-align: left;
+    z-index: 2;
+
+    color: white;
+    @include gvars.mobileM {
+      text-align: center;
+    }
+    h1 {
+      font-size: 5rem;
+      word-break: break-word;
+      @include gvars.mobileL {
+        font-size: 7rem;
+      }
+    }
+    .textBG {
+    }
+    .GemsContainer {
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      .gemone {
+        position: absolute;
+        right: 0;
+        width: 7rem;
+        top: 4.5rem;
+        height: auto;
+        z-index: 1;
+        @include gvars.laptop {
+          right: -5rem;
+        }
+      }
+
+      .gem1Outline {
+        position: absolute;
+        right: -1rem;
+        width: 7rem;
+        top: 4rem;
+        height: auto;
+        z-index: 0;
+        @include gvars.laptop {
+          right: -6rem;
+        }
+      }
+      .gem2 {
+        position: absolute;
+        width: 6rem;
+        height: auto;
+        left: -11rem;
+        top: 7.5rem;
+        z-index: 1;
+      }
+      .gem2Outline {
+        position: absolute;
+        width: 6rem;
+        height: auto;
+        left: -11.7rem;
+        top: 8em;
+        z-index: 0;
+      }
+      .gem3 {
+        position: absolute;
+        width: 3rem;
+        height: auto;
+        z-index: -1;
+        top: 8rem;
+        right: 0;
+        left: 2rem;
+
+        @include gvars.laptop {
+          top: 4rem;
+          right: 0;
+          left: 0;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      .gem3Outline {
+        position: absolute;
+        width: 3rem;
+        height: auto;
+        z-index: -2;
+        top: 8.2rem;
+        right: 0;
+        left: 1.6rem;
+
+        margin-right: auto;
+        @include gvars.laptop {
+          top: 4rem;
+          right: 0;
+          left: 37.6rem;
+        }
+      }
+
+      .gem4 {
+        width: 9rem;
+        height: auto;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+
+        top: 32rem;
+        left: 2rem;
+        @include gvars.laptop {
+          top: 16rem;
+          left: 38rem;
+        }
+      }
+      .gem4b {
+        filter: blur(0.25em) brightness(1.1);
+        width: 9.2rem;
+        z-index: 0;
+        left: 37.7rem;
+        top: 14.8rem;
+      }
+      .gem4Outline {
+        width: 9rem;
+        height: auto;
+        position: absolute;
+        z-index: 0;
+        top: 32.5rem;
+        left: 1.4rem;
+        @include gvars.laptop {
+          top: 16.5rem;
+          left: 37.4rem;
+        }
+      }
+    }
+    .animatedTextContainer {
+      position: relative;
+      .AnimatedText {
+        background: url("../../public/img/bitmaps/textbg2.webp") no-repeat;
+        background-position: center;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+      .AnimatedText2 {
+        background: url("../../public/img/bitmaps/textbg2.webp") no-repeat;
+        background-position: center;
+        -webkit-background-clip: text;
+        color: transparent;
+        background-attachment: fixed;
+        filter: blur(0.03em);
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+        @keyframes textGlow {
+          0% {
+            filter: blur(0.03em);
+          }
+          50% {
+            filter: blur(0.06em);
+          }
+          100% {
+            filter: blur(0.03em);
+          }
+        }
+        animation: textGlow 6s infinite;
+      }
+    }
+  }
+}

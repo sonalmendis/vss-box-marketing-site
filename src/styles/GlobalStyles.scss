@@ -279,6 +279,14 @@ body {
 }
 html {
   font-size: 100%;
+  width: 100%;
+
+  @include gvars.tablet {
+    font-size: 2.4vw;
+  }
+  @include gvars.laptop {
+    font-size: 1vw;
+  }
 }
 
 body {
@@ -287,6 +295,10 @@ body {
   font-weight: 400;
   font-style: normal;
   overflow-x: hidden;
+  background: #090516;
+  color: white;
+  overflow-y: hidden;
+  text-align: left;
   @include gvars.tablet {
     font-size: 20px;
   }
@@ -303,40 +315,118 @@ body.menu-expanded {
  ********/
 
 .outer-grid {
-  width: 100%;
-  max-width: 500px;
+  width: 90vw;
+  // max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+  // padding-left: 1.25rem;
+  // padding-right: 1.25rem;
 }
 
 .inner-grid {
+  width: 82vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 .inner-grid2 {
+  width: 72vw;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 // Vertical padding is my 2023 way of doing margin. I'm using padding instead of margin because it's easier to control the spacing between elements. We can also use display:grid instead of flexbox for inside elements
 
 // Adding the "no-top" class fixes the issue of having two divs that are seperate sections but the same background colour. Without the "no-top" class, the top padding of the second div will be the same colour as the background, which makes it look even bigger than needed. If the second div has a different background color however then you don't need the "no-top" class as it will "look" spaced out enough.
 
-.vertical-padding-small {
-  padding-top: 1em;
-  padding-bottom: 1em;
+.vertical-padding1 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   &.no-top {
     padding-top: 0;
   }
 }
-.vertical-padding-normal {
-  padding-top: 2em;
-  padding-bottom: 2em;
+.vertical-padding2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   &.no-top {
     padding-top: 0;
   }
 }
-.vertical-padding-large {
-  padding-top: 3em;
-  padding-bottom: 3em;
+.vertical-padding3 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding4 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding5 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding6 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding7 {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding8 {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding9 {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding10 {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding11 {
+  padding-top: 11rem;
+  padding-bottom: 11rem;
+  &.no-top {
+    padding-top: 0;
+  }
+}
+
+.vertical-padding12 {
+  padding-top: 12rem;
+  padding-bottom: 12rem;
   &.no-top {
     padding-top: 0;
   }
@@ -344,26 +434,128 @@ body.menu-expanded {
 
 @include gvars.tablet {
   .outer-grid {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 0;
+    padding-right: 0;
     max-width: unset;
+    width: 94%;
   }
 
   .tablet-inner-grid {
-    padding-left: 7em;
-    padding-right: 7em;
+    width: 80vw;
+    max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .vertical-padding-normal {
-    padding-top: 3em;
-    padding-bottom: 3em;
+  .tablet-inner-grid2 {
+    width: 70vw;
+    max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tablet-inner-grid3 {
+    width: 65vw;
+    max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tablet-inner-grid4 {
+    width: 50vw;
+    max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tablet-vertical-padding1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     &.no-top {
       padding-top: 0;
     }
   }
-  .vertical-padding-large {
-    padding-top: 4em;
-    padding-bottom: 4em;
+
+  .tablet-vertical-padding2 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding3 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding4 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding5 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding6 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding7 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding8 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding9 {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding10 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding11 {
+    padding-top: 11rem;
+    padding-bottom: 11rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .tablet-vertical-padding12 {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
     &.no-top {
       padding-top: 0;
     }
@@ -381,34 +573,146 @@ body.menu-expanded {
   }
 
   .desktop-inner-grid {
-    width: 70.6vw;
+    width: 79.6vw;
     max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .desktop-inner-grid2 {
-    width: 60vw;
+    width: 70vw;
     max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
   .desktop-inner-grid3 {
-    width: 50vw;
+    width: 60vw;
     max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
   .desktop-inner-grid4 {
-    width: 40vw;
+    width: 50vw;
     max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
   .desktop-inner-grid5 {
+    width: 40vw;
+    max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .desktop-inner-grid6 {
     width: 33.33vw;
     max-width: unset;
+    margin-left: auto;
+    margin-right: auto;
   }
   .desktop-vertical-padding-small {
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .desktop-vertical-padding-large {
-    padding-top: 7em;
-    padding-bottom: 7em;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .desktop-vertical-padding1 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding2 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding3 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding4 {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding5 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding6 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding7 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding8 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding9 {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding10 {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding11 {
+    padding-top: 11rem;
+    padding-bottom: 11rem;
+    &.no-top {
+      padding-top: 0;
+    }
+  }
+
+  .desktop-vertical-padding12 {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+    &.no-top {
+      padding-top: 0;
+    }
   }
 }
 
@@ -428,52 +732,108 @@ ul {
   margin: 0;
 }
 
+// LEMON MILK ALL CAPS
+// Use sparingly
 h1 {
-  font-family: var(--font1), sans-serif;
-  margin-bottom: 0.4em;
-  font-size: 3em;
+  font-family: var(--font3), sans-serif;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+  font-size: 2.2rem;
+  font-style: normal;
+  text-transform: uppercase;
+  @include gvars.tablet {
+    font-size: 3rem;
+  }
 }
 
 h2 {
   font-family: var(--font1), sans-serif;
-  font-size: 2.25em;
+  font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
+  &.s1 {
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+  &.s2 {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+  &.s3 {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+  &.s4 {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+  }
+  &.s5 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+  &.s6 {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+  &.s7 {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+
+  &.underline {
+    &::after {
+      content: "";
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: white;
+      margin-top: 0.5rem;
+      @include gvars.tablet {
+        //     margin-left: auto;
+        // margin-right: auto;
+        margin-top: 1rem;
+      }
+      @include gvars.laptop {
+        margin-left: 0;
+        margin-right: 0;
+        width: 30px;
+        margin-top: 0.7rem;
+      }
+    }
+  }
 }
 
 h3 {
-  font-weight: 300;
-  letter-spacing: 3px;
-  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  font-size: 0.7rem;
   text-align: center;
-  margin-top: 1em;
+  // margin-top: 1em;
+  margin-bottom: 1.5rem;
   text-transform: uppercase;
+  display: inline-block;
+  font-family: var(--font2), sans-serif;
+  &.underline {
+    &::after {
+      content: "";
+      display: block;
+      // width: 50px;
+      height: 0.1rem;
+      background: white;
+      width: auto;
+      margin-top: 0.2rem;
+    }
+  }
 }
 
 h4 {
   color: #8e8e8e;
   text-transform: uppercase;
-  font-size: 0.9em;
+  font-size: 0.9rem;
   letter-spacing: 1.2px;
   font-weight: 300;
 }
-h2::after {
-  content: "";
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: black;
-  margin-top: 0.1em;
-  @include gvars.tablet {
-    //     margin-left: auto;
-    // margin-right: auto;
-  }
-  @include gvars.laptop {
-    margin-left: 0;
-    margin-right: 0;
-    width: 30px;
-  }
-}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -481,19 +841,30 @@ a {
 
 p,
 li {
-  font-size: 1.15em;
-  line-height: 1.45em;
-  margin-bottom: 1em;
+  font-size: 1.15rem;
+  line-height: 1.85rem;
+  margin-bottom: 1rem;
   font-family: var(--font2), sans-serif;
+  &.faded {
+    opacity: 0.75;
+  }
   &:last-child {
     margin-bottom: 0;
   }
 
   @include gvars.tablet {
-    font-size: 1em;
+    font-size: 1.1rem;
   }
 }
 
+p.large {
+  font-size: 1.45rem;
+  line-height: 2.35rem;
+  font-family: var(--font2), sans-serif;
+}
+.no-margin {
+  margin: 0;
+}
 /****
 MISC
 */
@@ -511,26 +882,33 @@ MISC
 
 .hidden {
   opacity: 0;
-  filter: blur(0.5em);
-  transform: translateY(1em);
-  transition: all 0.8s ease-in-out;
+  filter: blur(0.2rem);
+  // transform: translateY(0.5rem);
+  // transition: all 0.8s ease-in-out;
 
-  /* transition: filter 0.8s ease-in-out 0.1s; */
+  transition: all 0.5s ease-in-out 0.1s;
+}
+
+.hiddenNoIntersection {
+  // Since the "hidden" class gets triggered by InersectionObserver
+  opacity: 0;
+  filter: blur(0.2rem);
+  transition: filter 0.8s ease-in-out 0.1s, opacity 0.8s ease-in-out 0.1s;
 }
 
 .hidden-parent {
   position: relative;
   opacity: 0;
   filter: blur(0.5em);
-  transform: translateY(1em);
-  transition: all 0.8s ease-in-out;
+  transform: translateY(1rem);
+  transition: filter 0.8s ease-in-out, transform 0.8s ease-in-out;
 }
 .hidden-offset {
   background: red;
   height: 10px;
   width: 10px;
   position: absolute;
-  top: 7em; // If you make this a compenent you can pass in the top value as a prop
+  top: 7rem; // If you make this a compenent you can pass in the top value as a prop
 }
 
 .animateLeft {
@@ -539,8 +917,8 @@ MISC
 
 .show {
   opacity: 1;
-  transform: translateX(0);
-  transform: translateY(0);
+  // transform: translateX(0);
+  // transform: translateY(0);
   filter: blur(0);
 }
 
@@ -589,8 +967,68 @@ MISC
   transition-delay: 3.2s;
 }
 
+@include gvars.laptop {
+  .desktop-delayMini {
+    transition-delay: 0.4s;
+  }
+
+  .desktop-delay {
+    transition-delay: 0.8s;
+  }
+
+  .desktop-delay2 {
+    transition-delay: 1.2s;
+  }
+
+  .desktop-delay3 {
+    transition-delay: 1.6s;
+  }
+
+  .desktop-delay4 {
+    transition-delay: 3.2s;
+  }
+}
+
 @media (prefers-reduced-motion) {
   .hidden {
     transition: none;
   }
+}
+
+.reTriggerAnimation {
+  animation: none !important;
+}
+
+.reTriggerPulse {
+  animation-delay: 0s, 0.5s, 2s, 3s !important;
+  animation-duration: 0.5s, 1s, 1s, 1s !important;
+  animation-timing-function: ease, ease-out, ease, ease !important;
+}
+
+.reTriggerPulse2 {
+  animation-delay: 0s, 0.5s, 2s, 3s !important;
+  animation-duration: 0.5s, 0.75s, 1s, 1s !important;
+  animation-timing-function: cubic-bezier(0.57, 0.26, 0.87, 0.91), ease-out,
+    ease, ease !important;
+}
+
+.freezeAtLastFrame {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+}
+.scaleOnClick {
+  @keyframes scaleonclick {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.3);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  // transform: scale(1) !important;
+
+  animation: scaleonclick 0.5s ease forwards !important;
 }

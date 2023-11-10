@@ -1,15 +1,31 @@
 @use "../styles/GlobalVariables.module.scss" as gvars;
 
+$magenta: #d31e4e;
+$grey: #8f9294;
 .OpeningSectionWrapper {
   height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: scale(2);
+  @keyframes scaleIn {
+    from {
+      transform: scale(2);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  backface-visibility: hidden;
+  animation: scaleIn 4s ease-in-out 1.5s forwards;
+
   .backgroundContainer {
     height: 100%;
     width: 100%;
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     right: 0;
@@ -19,16 +35,766 @@
     z-index: 0;
   }
   .background {
-    object-fit: cover;
-    width: 100%;
+    // object-fit: cover;
+    width: 120%;
     height: 100%;
-  }
-  .textContainer {
-    background: black;
-    color: white;
-    padding: 3rem;
-    border-radius: 1em;
+    z-index: 1;
     position: relative;
-    z-index: 2;
+    filter: hue-rotate(0deg);
+    @keyframes hueChange {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+      25% {
+        filter: hue-rotate(60deg);
+      }
+      50% {
+        filter: hue-rotate(0);
+      }
+      75% {
+        filter: hue-rotate(-60deg);
+      }
+      100% {
+        filter: hue-rotate(0deg);
+      }
+    }
+    animation: hueChange 8s linear 4s infinite;
+    @include gvars.laptop {
+      width: 100%;
+    }
+  }
+
+  .cubeContainer {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    .cubeInnerContainer {
+      width: 3vw;
+      height: 3vw;
+      cursor: pointer;
+      perspective: 500px;
+      margin-top: 33vh;
+
+      // transform: scale(1.5);
+
+      @keyframes cubeIntro {
+        from {
+          transform: scale(1.5);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      animation: cubeIntro 1s ease-in-out 5.5s forwards;
+      .cube {
+        position: relative;
+        width: 3vw;
+        height: 3vw;
+        transform-style: preserve-3d;
+        transform: rotate(225deg) rotate3d(1, 1, 0, 0deg);
+        @keyframes cubeRotate {
+          from {
+            transform: rotate(225deg) rotate3d(1, 1, 0, 0deg);
+          }
+          to {
+            transform: rotate(225deg) rotate3d(1, 1, 0, 360deg);
+          }
+        }
+        animation: cubeRotate 8s linear infinite;
+        .face {
+          width: 9vw;
+          height: 9vw;
+          background: rgba(72, 102, 170, 0);
+          border: 0.15rem solid rgba(255, 255, 255, 0);
+          position: absolute;
+          opacity: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @keyframes borderAppear {
+            from {
+              border: 0.15rem solid rgba(255, 255, 255, 0);
+              background: rgba(72, 102, 170, 0);
+            }
+            to {
+              border: 0.15rem solid rgba(255, 255, 255, 1);
+              background: rgba(72, 102, 170, 0.2);
+            }
+          }
+          @keyframes faceBGchange {
+            0% {
+              background: rgba(72, 134, 170, 0.2);
+            }
+            50% {
+              background: rgba(39, 79, 143, 0.2);
+            }
+            100% {
+              background: rgba(72, 134, 170, 0.2);
+            }
+          }
+          animation: faceBGchange 8s linear 8s infinite,
+            borderAppear 2s linear 5.5s forwards;
+          &.front {
+            transform: translateZ(4.5vw);
+          }
+          &.back {
+            transform: translateZ(-4.5vw) rotateY(180deg);
+          }
+          &.left {
+            transform: translateX(-4.5vw) rotateY(-90deg);
+          }
+
+          &.right {
+            transform: translateX(4.5vw) rotateY(90deg);
+          }
+          &.top {
+            transform: translateY(-4.5vw) rotateX(90deg);
+          }
+
+          &.bottom {
+            transform: translateY(4.5vw) rotateX(-90deg);
+          }
+
+          @include gvars.laptop {
+            width: 2vw;
+            height: 2vw;
+
+            &.front {
+              transform: translateZ(1vw);
+            }
+            &.back {
+              transform: translateZ(-1vw) rotateY(180deg);
+            }
+            &.left {
+              transform: translateX(-1vw) rotateY(-90deg);
+            }
+
+            &.right {
+              transform: translateX(1vw) rotateY(90deg);
+            }
+            &.top {
+              transform: translateY(-1vw) rotateX(90deg);
+            }
+
+            &.bottom {
+              transform: translateY(1vw) rotateX(-90deg);
+            }
+          }
+        }
+      }
+    }
+  }
+  .screenContainer {
+    height: 100vh;
+    width: 100%;
+
+    border-radius: 1em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    overflow: hidden;
+    z-index: 0;
+    background: #0a0214;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .innerContainer {
+      width: 100vw;
+      height: 100vh;
+      .textContainer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        z-index: 3;
+
+        .textInnerContainer {
+          position: relative;
+          transform: translateZ(0);
+          @keyframes textReveal {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+          .logoMiddle {
+            width: 5rem;
+            height: auto;
+            display: block;
+
+            position: absolute;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+
+            right: 0;
+            top: -11vh;
+            opacity: 0;
+            animation: textReveal 1.5s ease-in-out 4s forwards;
+          }
+          .centerText {
+            margin-bottom: 5vh;
+            h1 {
+              backface-visibility: hidden;
+
+              opacity: 0;
+              animation: textReveal 1s ease-in-out 1.5s forwards;
+            }
+            h3 {
+              @keyframes textScale {
+                from {
+                  transform: scale(2) translateY(5vh);
+                }
+                to {
+                  transform: scale(1) translateY(0);
+                }
+              }
+              opacity: 0;
+              transform: scale(2) translateY(5vh);
+              animation: textReveal 0.5s ease-in-out 0s forwards,
+                textScale 1s ease-in-out 0.75s forwards;
+            }
+          }
+        }
+      }
+      .circlesContainer {
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        .circlesInnerContainer {
+          position: relative;
+          height: 100vh;
+
+          opacity: 0.44;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 144vw;
+          position: absolute;
+          top: 14vh;
+
+          @include gvars.laptop {
+            width: 75vw;
+          }
+          .circle {
+            @keyframes slideIn {
+              from {
+                opacity: 0;
+                transform: translateY(29vh);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+            @keyframes slideIn2 {
+              0% {
+                opacity: 0;
+                transform: translateY(29vh);
+              }
+              50% {
+                transform: translateY(0);
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+            width: 100%;
+
+            border-radius: 100%;
+            background: black;
+            height: 60vh;
+            margin-left: auto;
+            margin-right: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            &:first-child {
+              bottom: 7vh;
+              opacity: 0;
+              z-index: 1;
+              animation: slideIn2 2s ease-in-out 1s forwards;
+
+              // animation: slideIn 1s ease-in-out 0.5s forwards;
+              background: rgb(27, 57, 131);
+              background: linear-gradient(
+                0deg,
+                rgba(27, 57, 131, 0) 75%,
+                rgba(27, 57, 131, 1) 120%
+              );
+            }
+            &:nth-child(2) {
+              opacity: 0;
+              z-index: 2;
+              animation: slideIn 1s ease-in-out 0.25s forwards;
+
+              background: rgb(27, 57, 131);
+              background: linear-gradient(
+                180deg,
+                rgba(27, 57, 131, 1) 0%,
+                rgba(27, 57, 131, 0) 50%
+              );
+            }
+          }
+        }
+      }
+      .dotsContainer {
+        display: none;
+        position: absolute;
+        width: 100%;
+        @include gvars.laptop {
+          display: block;
+        }
+      }
+
+      .dotsInnerContainer {
+        height: 100vh;
+        width: 100vw;
+        position: relative;
+        .dots {
+          height: 18vh;
+          width: 8.9vw;
+
+          background-size: 1.3vw 1.3vw;
+
+          margin-top: 43.8vh;
+          margin-left: 21.5vw;
+          clip-path: inset(0 100% 0 0);
+          opacity: 0;
+
+          &.white {
+            @keyframes whiteDotsIntro {
+              0% {
+                opacity: 0;
+                clip-path: inset(0 100% 0 0);
+                filter: blur(0.1em);
+              }
+              20% {
+                clip-path: inset(0 0 0 0);
+                filter: blur(0);
+              }
+              80% {
+                clip-path: inset(0 0 0 0);
+              }
+              100% {
+                opacity: 1;
+                clip-path: inset(0 100% 0 0);
+              }
+            }
+            background-image: radial-gradient(
+              circle at 0.24vw 0.24vw,
+              $grey 0.24vw,
+              transparent 0
+            );
+            animation: whiteDotsIntro 3.5s linear 2s alternate;
+          }
+          &.magenta {
+            margin-top: 0;
+            position: absolute;
+            top: 0;
+            background-image: radial-gradient(
+              circle at 0.24vw 0.24vw,
+              $magenta 0.24vw,
+              transparent 0
+            );
+            &.m1 {
+              @keyframes m1DotsIntro {
+                0% {
+                  opacity: 0;
+                  clip-path: inset(30% 100% 30% 0);
+                  filter: blur(0.1em);
+                }
+                20% {
+                  clip-path: inset(30% 0% 35% 0);
+                  filter: blur(0);
+                }
+                80% {
+                  clip-path: inset(30% 0% 35% 0);
+                }
+
+                100% {
+                  opacity: 1;
+                  clip-path: inset(30% 100% 30% 0);
+                }
+              }
+              clip-path: inset(30% 100% 30% 0);
+              animation: m1DotsIntro 3.5s linear 2s alternate;
+            }
+            &.m2 {
+              @keyframes m2DotsIntro {
+                0% {
+                  opacity: 0;
+                  clip-path: inset(0% 100% 85% 0);
+                  filter: blur(0.1em);
+                }
+                20% {
+                  clip-path: inset(0% 88% 85% 0);
+                  filter: blur(0);
+                }
+                80% {
+                  clip-path: inset(0% 88% 85% 0);
+                }
+
+                100% {
+                  opacity: 1;
+                  clip-path: inset(0% 100% 85% 0);
+                }
+              }
+              clip-path: inset(0% 88% 85% 0);
+              animation: m2DotsIntro 3.5s linear 2s alternate;
+            }
+            &.m3 {
+              @keyframes m3DotsIntro {
+                0% {
+                  opacity: 0;
+                  clip-path: inset(85% 100% 0 0);
+                  filter: blur(0.1em);
+                }
+                20% {
+                  clip-path: inset(85% 0% 0 0);
+                  filter: blur(0);
+                }
+                80% {
+                  clip-path: inset(85% 0% 0 0);
+                }
+
+                100% {
+                  opacity: 1;
+                  clip-path: inset(85% 100% 0 0);
+                }
+              }
+              clip-path: inset(85% 0% 0 0);
+              animation: m3DotsIntro 3.5s linear 2s alternate;
+            }
+          }
+        }
+      }
+
+      .outlinedCirclesContainer {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg.outlinedCircle {
+          height: 100vh;
+          width: 100vw;
+        }
+        .leftCircle {
+          @keyframes leftCircleIntro {
+            0% {
+              clip-path: inset(0 100% 100% round 100%);
+            }
+
+            100% {
+              clip-path: inset(0 0 0 0 round 100%);
+            }
+          }
+          @keyframes leftCircleExit {
+            0% {
+              clip-path: inset(0 0 0 0 round 100%);
+            }
+            100% {
+              clip-path: inset(0 100% 100% round 100%);
+            }
+          }
+          clip-path: inset(0 100% 100% round 100%);
+          position: absolute;
+          margin-bottom: 61vh;
+          margin-right: 82vw;
+          width: 51vw;
+          height: auto;
+          animation: leftCircleIntro 2.5s ease 1s forwards,
+            leftCircleExit 3s ease 4s forwards;
+
+          @include gvars.laptop {
+            margin-right: 57vw;
+            width: 40vh;
+          }
+        }
+        .rightCircle {
+          @keyframes rightCircleIntro {
+            0% {
+              stroke-dashoffset: 9999;
+            }
+
+            100% {
+              stroke-dashoffset: 0;
+            }
+          }
+
+          @keyframes rightCircleExit {
+            0% {
+              stroke-dashoffset: 0;
+            }
+
+            100% {
+              stroke-dashoffset: 9999;
+            }
+          }
+          r: 18vw;
+          cx: 85vw;
+          cy: 22vh;
+          stroke: $grey;
+          fill: transparent;
+          stroke-dasharray: 9999;
+          stroke-dashoffset: 9999;
+          animation: rightCircleIntro 6s cubic-bezier(0.75, -0.01, 1, 1) 1s
+              forwards,
+            rightCircleExit 3s ease 3s forwards;
+
+          @include gvars.laptop {
+            r: 20vh;
+            cx: 77vw;
+            cy: 18vh;
+          }
+        }
+      }
+
+      .bottomOutlinedCirclesContainer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        @keyframes bottomCircleReveal {
+          0% {
+            stroke-dashoffset: 1000;
+          }
+
+          100% {
+            stroke-dashoffset: 0;
+          }
+        }
+
+        @keyframes bottomCircleExit {
+          0% {
+            stroke-dashoffset: 0;
+          }
+
+          100% {
+            stroke-dashoffset: 1000;
+          }
+        }
+        .bottomOutlinedCirclesInnerContainer {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          svg.bottomOutlinedCircle {
+            position: absolute;
+            circle {
+              cx: 1vw;
+              cy: 7vh;
+              r: 8vw;
+              stroke: $magenta;
+              stroke-dasharray: 1000;
+              stroke-dashoffset: 1000;
+              fill: transparent;
+              animation: bottomCircleReveal 2s cubic-bezier(0.75, -0.01, 1, 1)
+                  2s forwards,
+                bottomCircleExit 2s ease 4s forwards;
+            }
+            @include gvars.laptop {
+              circle {
+                cx: 5vw;
+                cy: 9vh;
+                r: 4vw;
+              }
+            }
+          }
+          .leftCircle {
+            top: 70vh;
+            left: 17vw;
+          }
+          .rightCircle {
+            top: 70vh;
+            right: 18vw;
+            transform: scaleX(-1);
+          }
+        }
+      }
+      .uiWireframeContainer {
+        display: none;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+
+        justify-content: center;
+        align-items: center;
+        @include gvars.laptop {
+          display: flex;
+        }
+        .uiWireframeInnerContainer {
+          margin-left: 67%;
+          margin-top: 12vw;
+          width: 100vw;
+          @keyframes uiLineReveal {
+            0% {
+              width: 0;
+            }
+            20% {
+              width: 5vw;
+            }
+            80% {
+              width: 5vw;
+            }
+            100% {
+              width: 0;
+            }
+          }
+          @keyframes uiFieldReveal {
+            0% {
+              stroke-dashoffset: 500;
+            }
+
+            100% {
+              stroke-dashoffset: 0;
+            }
+          }
+          @keyframes uiFieldExit {
+            0% {
+              stroke-dashoffset: 0;
+            }
+            100% {
+              stroke-dashoffset: 500;
+            }
+          }
+          @keyframes uiSubmitReveal {
+            0% {
+              width: 0;
+            }
+            20% {
+              width: 8vw;
+            }
+            80% {
+              width: 8vw;
+            }
+            100% {
+              width: 0;
+            }
+          }
+          .uiLine {
+            width: 9vw;
+            height: 1.5vw;
+            rect {
+              fill: $grey;
+              // stroke-width: 0.08rem;
+              // stroke: $grey;
+              width: 0;
+              height: 0.4vw;
+
+              /* fill: red; */
+              x: 0;
+              y: 1;
+              rx: 0.3vw;
+              // stroke-dasharray: 1000;
+              // stroke-dashoffset: 1000;
+              animation: uiLineReveal 3s ease 2s forwards;
+            }
+          }
+
+          .uiField {
+            width: 9vw;
+            height: 1.5vw;
+            display: block;
+            &:nth-child(5) {
+              margin-bottom: 1vw;
+            }
+            rect {
+              fill: transparent;
+              stroke-width: 0.08rem;
+              stroke: $grey;
+              width: 8vw;
+              height: 0.8vw;
+
+              /* fill: red; */
+              x: 0;
+              y: 1;
+              rx: 0.4vw;
+              stroke-dasharray: 500;
+              stroke-dashoffset: 500;
+              animation: uiFieldReveal 2.5s linear 2s forwards,
+                uiFieldExit 2s linear 3.5s forwards;
+            }
+          }
+          .uiSubmit {
+            rect {
+              height: 0.8vw;
+              width: 0;
+              fill: $magenta;
+              x: 0;
+              y: 1;
+              rx: 0.4vw;
+              animation: uiSubmitReveal 4s ease 2s forwards;
+            }
+          }
+        }
+      }
+      .crossesContainer {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .crossesInnerContainer {
+          height: 6vh;
+          width: 14vw;
+          background-image: url("../../public/img/vectors/cross.svg");
+          background-size: 6.7vw;
+          margin-bottom: 53vh;
+          margin-left: 54vw;
+          @keyframes crossesReveal {
+            0% {
+              clip-path: inset(50% 50% 50% 50%);
+            }
+            100% {
+              clip-path: inset(0 0 0 0);
+            }
+          }
+          @keyframes crossesExit {
+            0% {
+              clip-path: inset(0 0 0 0);
+            }
+            100% {
+              clip-path: inset(50% 50% 50% 50%);
+            }
+          }
+          clip-path: inset(50% 50% 50% 50%);
+          animation: crossesReveal 1s linear 2s forwards,
+            crossesExit 1s linear 4s forwards;
+
+          @include gvars.laptop {
+            height: 11vh;
+            width: 5vw;
+            background-size: 1.7vw;
+            margin-bottom: 46vh;
+            margin-left: 47vw;
+          }
+        }
+      }
+    }
   }
 }

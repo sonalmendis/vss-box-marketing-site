@@ -2,27 +2,35 @@
 .HeaderWrapper {
   position: fixed;
   background-color: transparent;
-  z-index: 99;
-  transition: background-color 0.2s ease-out;
-  color: white;
-  width: 100%;
-  opacity: 0;
-  animation: fadeIn 0.8s ease-in-out forwards 1s;
+  z-index: 999;
+  /* transition: background-color 0.4s linear; */
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  color: white;
+  /* width: 100%; */
+  visibility: hidden;
+  width: 100vw;
+  opacity: 0;
+  backdrop-filter: blur(1.2em);
+  transition: all 0.4s linear;
+  &.headershow {
+    opacity: 1;
+    visibility: visible;
   }
   // This is the outer container needed to have a smoothly working expandable mobile menu, this contains only the top parts
   .top-container {
     background: rgba(0, 0, 0, 0);
-    transition: all 0.2s;
+    /* box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35); */
+    /* box-shadow: 0px 9px 9px 1px rgba(0, 0, 0, 0.35); */
+    /* transition: opacity 0.2s; */
+    padding-top: 0.65em;
+    padding-bottom: 0.65em;
+    @include gvars.laptop {
+      padding-top: 0em;
+      padding-bottom: 0em;
+      backdrop-filter: blur(0);
+    }
     &.open {
-      background: rgba(0, 0, 0, 1) !important;
+      background: #1e0a39 !important;
     }
     .inner-container {
       display: flex;
@@ -35,8 +43,20 @@
   }
 
   .left-column {
+    a {
+    }
     .logo {
-      width: 6.5em;
+      width: 7rem;
+      @include gvars.laptop {
+        width: 5.8rem;
+      }
+      /* transition: opacity 0.2s; */
+      &.mini {
+        width: 6.8em;
+        @include gvars.laptop {
+          width: 7.6vw;
+        }
+      }
     }
   }
 
@@ -48,38 +68,100 @@
     @include gvars.laptop {
       a {
         display: inline-block;
-        margin-right: 1em;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        &:last-of-type {
-          margin-right: 0;
-        }
+        font-size: 0.82em;
+        font-weight: 700;
+        margin-right: 2em;
       }
       .hamburger {
         display: none;
+      }
+      .hamburger-react {
+        display: none;
+      }
+    }
+
+    @include gvars.laptop {
+      a {
+        font-size: 0.8vw;
       }
     }
   }
 
   .mobile-menu-container {
     height: 100vh;
+    width: 100%;
     margin-top: -150vh;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
     z-index: 2;
     transition: all 0.2s;
     color: white;
-    background: #393939;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    background: rgb(30, 10, 57);
+    background: rgb(5 2 27 / 85%);
+    padding-top: 4em;
+    padding-bottom: 4em;
     &.open {
       opacity: 1;
       margin-top: 0;
     }
+    @include gvars.tablet {
+      justify-content: center;
+      padding-top: 0;
+    }
+    .menu-inner-wrapper {
+      @include gvars.tablet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+    .individual-link-container {
+      transform: scale(1.2);
+      transform-origin: top left;
+      @include gvars.tablet {
+        transform: scale(1.4);
+        transform-origin: center;
+      }
+    }
     a {
-      display: block;
+      display: inline-block;
       cursor: pointer;
-      margin-bottom: 4vh;
-      font-size: 1.6rem;
+      margin-bottom: 1.6rem;
+
+      button {
+        border-radius: 20em;
+      }
+    }
+    .contact-details-container {
+      img {
+        width: 2em;
+        margin-right: 1em;
+      }
+      .col {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1em;
+      }
+      @include gvars.tablet {
+        img {
+          margin-bottom: 1rem;
+          margin-right: 0;
+        }
+        .col {
+          flex-direction: column;
+          margin-bottom: 2rem;
+        }
+        span {
+          font-size: 1rem;
+        }
+      }
+    }
+    @include gvars.laptop {
+      display: none;
     }
   }
 }

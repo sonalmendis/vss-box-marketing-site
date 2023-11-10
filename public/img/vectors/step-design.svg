@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_4" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 34.11 34.11">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-dasharray: 0 0 1.41 .91;
+        stroke-width: .1px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-width: .2px;
+      }
+
+      .cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="3.76" y1="4.18" x2="29.19" y2="28.8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#94bfff" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <g>
+      <circle class="cls-4" cx="17.06" cy="17.06" r="17.01"/>
+      <circle class="cls-1" cx="17.06" cy="17.06" r="17.01"/>
+    </g>
+    <g>
+      <g>
+        <polyline class="cls-2" points="24.42 13.56 24.42 12.81 17.06 8.56 9.7 12.81 9.7 21.31 17.06 25.56 24.42 21.31 24.42 20.38"/>
+        <line class="cls-2" x1="17.06" y1="16.99" x2="17.06" y2="25.56"/>
+      </g>
+      <g>
+        <polygon class="cls-3" points="17.06 17.06 17.06 22.71 12.17 19.88 12.17 14.23 12.17 14.23 17.06 17.06"/>
+        <polygon class="cls-3" points="21.95 14.23 21.95 22.73 17.06 25.56 17.06 17.06 21.94 14.23 21.95 14.23"/>
+        <polygon class="cls-3" points="21.94 14.23 17.06 17.06 12.17 14.23 17.06 11.41 21.94 14.23"/>
+      </g>
+    </g>
+  </g>
+  <image width="2342" height="2341" transform="translate(32.42 -98.72) scale(.1)" xlink:href="data:image/png;base64,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"/>
+</svg>

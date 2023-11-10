@@ -1,21 +1,31 @@
 {
-  "name": "nextjs-boilerplate-2023",
+  "name": "vssbox-marketing-site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 3002",
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.5.4",
+    "@react-three/drei": "^9.88.11",
+    "@react-three/fiber": "^8.15.9",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.489",
+    "@types/three": "^0.158.1",
+    "hamburger-react": "^2.5.0",
+    "next": "13.5.5",
     "react": "^18",
     "react-dom": "^18",
-    "sharp": "^0.32.6",
     "react-hook-form": "^7.46.2",
     "react-responsive": "^9.0.2",
-    "hamburger-react": "^2.5.0"
+    "react-responsive-carousel": "^3.2.23",
+    "react-scroll-parallax": "^3.4.2",
+    "react-type-animation": "^3.2.0",
+    "sharp": "^0.32.6",
+    "styled-components": "^6.1.0",
+    "three": "^0.158.0"
   },
   "devDependencies": {
     "eslint": "^8",
