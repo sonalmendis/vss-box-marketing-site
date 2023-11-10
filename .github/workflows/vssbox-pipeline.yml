@@ -1,0 +1,29 @@
+name: vssbox-pipeline.js CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Use Node.js ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build
+          pm2 stop 1
+          pm2 start 1
+          pm2 save
+          sudo service nginx restart
