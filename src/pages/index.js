@@ -48,7 +48,7 @@ import BasicTitleText from "../Components/BasicTitleText";
 import MockupSection from "@/Components/MockupSection";
 
 export default function Home(props) {
-  const disableOpeningAnimation = true; // For development purposes
+  const disableOpeningAnimation = false; // For development purposes
   const sethasAnimationPlayedOnce = props.sethasAnimationPlayedOnce;
   const hasAnimationPlayedOnce = disableOpeningAnimation
     ? true
