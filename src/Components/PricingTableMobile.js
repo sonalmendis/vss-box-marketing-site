@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-
+import Modal from "./Modal";
 import * as GlobalVariables from "@/styles/GlobalVariables";
 import GreenBullet from "../../public/img/vectors/green-bullet.svg";
 import YellowBullet from "../../public/img/vectors/yellow-bullet.svg";
@@ -44,7 +44,7 @@ const CarouselStyled = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-
+      position: relative;
       height: 100%;
       padding: 1.1em 0.5em;
       flex-direction: column;
@@ -93,11 +93,7 @@ const CarouselStyled = styled.div`
         position: relative;
         background: none;
         z-index: 2;
-        background: linear-gradient(
-          135deg,
-          rgba(21, 33, 61, 1) 0%,
-          rgba(37, 42, 89, 1) 100%
-        );
+
         border: none;
         text-align: left;
         justify-content: flex-start;
@@ -126,60 +122,23 @@ const CarouselStyled = styled.div`
         }
       }
     }
-    .pro-container {
-      .first-row {
-        &:before {
-          content: "";
-          position: absolute;
-          top: -6px;
-          left: -6px;
-          z-index: -1;
-          filter: blur(1em);
-          width: calc(100% + 12px);
-          height: calc(100% + 12px);
-
-          opacity: 1;
-          animation: glowCarousel 5s linear infinite,
-            gradientBackgroundCarousel 8s linear infinite;
-
-          background-image: linear-gradient(
-            135deg,
-            rgba(39, 126, 209, 1) 0%,
-            rgb(118, 48, 218) 30%,
-            rgba(145, 43, 170, 1) 60%,
-            rgba(170, 43, 59, 1) 100%
-          );
-          background-size: 200% 200%;
-          background-position: 0% 0%;
-          @media ${GlobalVariables.device.tablet} {
-            filter: blur(1.4em);
-            width: calc(100% + 2em);
-            height: calc(100% + 2em);
-            top: -1em;
-            left: -1em;
-          }
-        }
-        &:after {
-          z-index: -1;
-          content: "";
-          position: absolute;
-          width: 100%;
-          height: 100%;
-
-          background-size: 400% 300%;
-          background-position: 0% 0%;
-          animation: gradientBackgroundCarousel 8s linear infinite;
-          left: 0;
-          top: 0;
-
-          background-image: linear-gradient(
-            135deg,
-            rgba(39, 126, 209, 1) 0%,
-            rgb(118, 48, 218) 30%,
-            rgba(145, 43, 170, 1) 60%,
-            rgba(170, 43, 59, 1) 100%
-          );
-        }
+    .first-plan-container {
+      .row.first-row {
+        background: linear-gradient(
+          135deg,
+          rgba(21, 33, 61, 1) 0%,
+          rgba(37, 42, 89, 1) 100%
+        );
+      }
+    }
+    .second-plan-container {
+      .row.first-row {
+        background: linear-gradient(130deg, #1a173d 0%, #342859 100%);
+      }
+    }
+    .third-plan-container {
+      .row.first-row {
+        background-image: linear-gradient(130deg, #2d1b37 0%, #512b53 100%);
       }
     }
   }
@@ -228,14 +187,23 @@ const CarouselStyled = styled.div`
     margin-top: 3.5em;
     display: block;
   }
+  .superscript-plus {
+    position: absolute;
+    top: 0.3rem;
+
+    margin-left: 1.3rem;
+    font-weight: 700;
+  }
   @media ${GlobalVariables.device.laptop} {
     display: none;
   }
 `;
 
-const Carousel2 = () => {
+const Carousel2 = (props) => {
+  const priceData = props.priceData;
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const handleOpen = props.handleOpen;
   const next = (e) => {
     // add class "animate" to e.target
     e.target.parentNode.classList.add("animate");
@@ -284,12 +252,15 @@ const Carousel2 = () => {
           swipeable={false}
           showThumbs={false}
         >
-          <div className="outer-wrapper pro-lite-container">
+          <div className="outer-wrapper first-plan-container">
             <div className="inner-grid">
               <div className="first-row row">
-                <h2 className="price-title">Basic Plan</h2>
-                <p>Great if you need a basic site up fast</p>
-                <h2>$299+</h2>
+                <h2 className="price-title">
+                  {" "}
+                  {priceData && priceData[0].attributes.price_class}
+                </h2>
+                <p>{priceData && priceData[0].attributes.price_desc}</p>
+                <h2>{priceData && priceData[0].attributes.price}</h2>
               </div>
               <div className="divider-row row">
                 <Image src={brushIcon} alt="brush icon" />
@@ -370,6 +341,118 @@ const Carousel2 = () => {
               </div>
 
               <div className="row">
+                <p className="superscript-plus">+</p>
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Custom email</p>
+              </div>
+
+              <div className="row">
+                <p className="superscript-plus">+</p>
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Analytics</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="outer-wrapper second-plan-container">
+            <div className="inner-grid">
+              <div className="first-row row">
+                <h2 className="price-title">
+                  {priceData && priceData[1].attributes.price_class}
+                </h2>
+                <p>{priceData && priceData[1].attributes.price_desc}</p>
+                <h2>{priceData && priceData[1].attributes.price}</h2>
+                <p
+                  style={{
+                    cursor: "pointer",
+                    fontstyle: "italic",
+                    textDecoration: "underline",
+                    marginTop: "0.5rem",
+                    marginBottom: "-0.5rem",
+                    color: "#b8d0ff",
+                  }}
+                  onClick={handleOpen}
+                >
+                  What is a CMS?
+                </p>
+              </div>
+              <div className="divider-row row">
+                <Image src={brushIcon} alt="brush icon" />
+                <h2 className="large">Design</h2>
+              </div>
+              <div className="row">
+                <p className="amount">
+                  <strong>4</strong>
+                </p>
+                <p className="offer">Design directions</p>
+              </div>
+              <div className="row">
+                <p className="amount">
+                  <strong>5-7</strong>
+                </p>
+                <p className="offer">Sections/Pages</p>
+              </div>
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Custom graphics</p>
+              </div>
+
+              <div className="divider-row row">
+                <Image src={codeIcon} alt="Code icon" />
+                <h2 className="large">Code</h2>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Responsive</p>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Basic SEO</p>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">CMS</p>
+              </div>
+
+              <div className="divider-row row">
+                <Image src={serverIcon} alt="Server icon" />
+                <h2 className="large">Server + Hosting</h2>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Free server hosting</p>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">SSL/HTTPS secure site</p>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">.com/.[anything] domain</p>
+              </div>
+
+              <div className="divider-row row">
+                <Image src={starIcon} alt="Star icon" />
+                <h2 className="large">Optionals/After care</h2>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Free after-care support</p>
+              </div>
+
+              <div className="row">
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
+                <p className="offer">Free minor content updates</p>
+              </div>
+
+              <div className="row">
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
                 <p className="offer">Custom email</p>
               </div>
@@ -381,12 +464,15 @@ const Carousel2 = () => {
             </div>
           </div>
 
-          <div className="outer-wrapper pro-lite-container">
+          <div className="outer-wrapper third-plan-container">
             <div className="inner-grid">
               <div className="first-row row">
-                <h2 className="price-title">Pro Plan</h2>
-                <p>Great if you need a basic site up fast</p>
-                <h2>$699+</h2>
+                <h2 className="price-title">
+                  {" "}
+                  {priceData && priceData[2].attributes.price_class}
+                </h2>
+                <p>{priceData && priceData[2].attributes.price_desc}</p>
+                <h2>{priceData && priceData[2].attributes.price}</h2>
               </div>
               <div className="divider-row row">
                 <Image src={brushIcon} alt="brush icon" />

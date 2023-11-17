@@ -68,8 +68,7 @@ const AlternatingRowStyled = styled.div`
   }
 
   .text-container.mockup-section .inner-container {
-    text-align: center;
-    padding: 3.4rem;
+    text-align: left;
 
     position: relative;
     /* background: rgba(255, 255, 255, 0.05); */
@@ -374,6 +373,7 @@ const AlternatingRowStyled = styled.div`
     }
   }
   img {
+    height: auto;
     width: 100%;
   }
 
@@ -393,7 +393,7 @@ const AlternatingRowStyled = styled.div`
 
   &.for-x-section {
     .inner-content-container {
-      margin-top: -20em;
+      margin-top: -29em;
     }
 
     .container-bg.mockup-section {
@@ -416,9 +416,9 @@ const AlternatingRowStyled = styled.div`
         justify-content: center;
         align-items: center;
         position: absolute;
-        grid-template-columns: 2fr 3fr;
+        grid-template-columns: 2fr 2fr;
         ${(props) =>
-          props.side === "right" && "grid-template-columns: 3fr 2fr;"}
+          props.side === "right" && "grid-template-columns: 2fr 2fr;"}
       }
     }
 

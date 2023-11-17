@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as GlobalVariables from "@/styles/GlobalVariables";
 import GreenBullet from "../../public/img/vectors/green-bullet.svg";
@@ -15,6 +15,7 @@ import codeIcon from "../../public/img/vectors/code.svg";
 import serverIcon from "../../public/img/vectors/server.svg";
 import starIcon from "../../public/img/vectors/star.svg";
 import Spacer from "./Spacer";
+import Modal from "./Modal";
 const PricingTableDesktopStyled = styled.div`
   display: none;
 
@@ -148,28 +149,19 @@ const PricingTableDesktopStyled = styled.div`
             z-index: 4;
           }
         }
+        .pro-container {
+          background: linear-gradient(130deg, #1a173d 0%, #342859 100%);
+        }
         .basic-plan-container {
-          background: linear-gradient(
-            135deg,
-            rgba(21, 33, 61, 1) 0%,
-            rgba(37, 42, 89, 1) 100%
-          );
+          background: linear-gradient(130deg, #15213d 0%, #252a59 100%);
         }
         .bespoke-plan-container {
-          background-image: linear-gradient(
-            135deg,
-            rgb(11 15 45) 0%,
-            rgb(87 36 138) 100%
-          );
+          background-image: linear-gradient(130deg, #2d1b37 0%, #512b53 100%);
         }
       }
       .basic-plan-container {
-        background-size: 200% 200%;
-        background-position: 0% 0%;
       }
       .bespoke-plan-container {
-        background-size: 200% 200%;
-        background-position: 100% 100%;
       }
     }
     .btn-cta-carousel {
@@ -229,6 +221,12 @@ const PricingTableDesktopStyled = styled.div`
 
 const PricingTableDesktop = (props) => {
   const isTypeingDone = props.istypingdone;
+  const priceData = props.priceData;
+
+  const handleOpen = props.handleOpen;
+  console.log(handleOpen);
+
+  useEffect(() => {}, []);
 
   return (
     <PricingTableDesktopStyled className={props.className}>
@@ -241,27 +239,52 @@ const PricingTableDesktop = (props) => {
                 isTypeingDone && "show"
               }`}
             >
-              <h2 className="price-title">Basic Plan</h2>
-              <p>Great if you need a basic site up fast</p>
-              <h2 className="s3">$299+</h2>
+              <h2 className="price-title">
+                {priceData && priceData[0].attributes.price_class}
+              </h2>
+              <p>{priceData && priceData[0].attributes.price_desc}</p>
+              <h2 className="s3">
+                {priceData && priceData[0].attributes.price}
+              </h2>
             </div>
             <div
               className={`col pro-container hiddenNoIntersection ${
                 isTypeingDone && "show"
               } delayMini `}
             >
-              <h2 className="price-title">Pro Plan</h2>
-              <p>Great if you need a basic site up fast</p>
-              <h2 className="s3">$699+</h2>
+              <h2 className="price-title">
+                {priceData && priceData[1].attributes.price_class}
+              </h2>
+              <p>{priceData && priceData[1].attributes.price_desc}</p>
+              <h2 className="s3">
+                {priceData && priceData[1].attributes.price}
+              </h2>
+              <p
+                style={{
+                  cursor: "pointer",
+                  fontstyle: "italic",
+                  textDecoration: "underline",
+                  marginTop: "0.5rem",
+                  marginBottom: "-0.5rem",
+                  color: "#b8d0ff",
+                }}
+                onClick={handleOpen}
+              >
+                What is a CMS?
+              </p>
             </div>
             <div
               className={`col bespoke-plan-container hiddenNoIntersection delay ${
                 isTypeingDone && "show"
               }`}
             >
-              <h2 className="price-title">Bespoke Plan</h2>
-              <p>Great if you need a basic site up fast</p>
-              <h2 className="s3">$999+</h2>
+              <h2 className="price-title">
+                {priceData && priceData[2].attributes.price_class}
+              </h2>
+              <p>{priceData && priceData[2].attributes.price_desc}</p>
+              <h2 className="s3">
+                {priceData && priceData[2].attributes.price}
+              </h2>
             </div>
           </div>
         </div>
@@ -393,13 +416,18 @@ const PricingTableDesktop = (props) => {
           <div className="row">
             <div className="inner-container">
               <div className="col">
-                <p className="offer">CMS</p>
+                <p className="offer">
+                  CMS{" "}
+                  <span onClick={handleOpen} style={{ cursor: "pointer" }}>
+                    (what is a CMS?)
+                  </span>
+                </p>
               </div>
               <div className="col">
                 <p className="amount">-</p>
               </div>
               <div className="col">
-                <p className="amount">-</p>
+                <Image src={blueBullet} className="bullet" alt="green bullet" />
               </div>
               <div className="col">
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
@@ -522,7 +550,6 @@ const PricingTableDesktop = (props) => {
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
               </div>
               <div className="col">
-                <p className="superscript-plus">+</p>
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
               </div>
               <div className="col">
@@ -541,7 +568,6 @@ const PricingTableDesktop = (props) => {
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
               </div>
               <div className="col">
-                <p className="superscript-plus">+</p>
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
               </div>
               <div className="col">

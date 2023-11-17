@@ -1,33 +1,23 @@
 /* eslint-disable react/no-unescaped-entities */
-import { createRoot } from "react-dom/client";
-import React, { useEffect, useState, useRef, useMemo, Suspense } from "react";
-import { FormProvider, useForm } from "react-hook-form";
-import styled from "styled-components";
 import * as GlobalVariables from "@/styles/GlobalVariables";
-import { TypeAnimation } from "react-type-animation";
-import Link from "next/link";
-import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
-import * as THREE from "three";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { Canvas, useFrame } from "@react-three/fiber";
 import Spline from "@splinetool/react-spline";
+import React, { useEffect, useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
+import { TypeAnimation } from "react-type-animation";
+import styled from "styled-components";
+import Modal from "@/Components/Modal";
 
 // IMAGES
-import { Model } from "@/Components/Model";
 
 //COMPONENTS
 import BasicTitleText from "@/Components/BasicTitleText";
-import Button from "@/Components/Button";
 import ContactForm from "@/Components/ContactForm";
 import PricingTableDesktop from "@/Components/PricingTableDesktop";
 import PricingTableMobile from "@/Components/PricingTableMobile";
-import SurveyQuestion from "@/Components/SurveyQuestion";
-import ThreeColSection from "@/Components/ThreeColSection";
 
 // images
 import Spacer from "@/Components/Spacer";
-
-import Loader from "../../public/img/loader.svg";
 
 const PricingStyled = styled.div`
   h1 {
@@ -510,11 +500,13 @@ const PricingStyled = styled.div`
   }
 
   .refund-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    @media ${GlobalVariables.device.laptop} {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+    }
   }
 
   .rhombus-spline-container {
@@ -538,6 +530,13 @@ const Pricing = (props) => {
   const isSubmitting = methods.formState.isSubmitting;
   const isSubmitSuccessful = methods.formState.isSubmitSuccessful;
   const [Message, setMessage] = React.useState("");
+
+  const [isCMSModalOpen, setIsCMSModalOpen] = useState(false);
+
+  const handleOpen = () => {
+    setIsCMSModalOpen(true);
+  };
+  const handleClose = () => setIsCMSModalOpen(false);
 
   const onSubmit = async (data, e) => {
     console.log("submit triggered");
@@ -1157,8 +1156,16 @@ const Pricing = (props) => {
     splineLoadingBreakpointTriggered,
     setSplineLoadingBreakpointTriggered,
   ] = useState(false);
-
+  const [priceData, setPriceData] = useState(null);
   useEffect(() => {
+    fetch(
+      "https://seashell-app-23kzq.ondigitalocean.app/api/pricings?sort=Rank&populate=*"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setPriceData(data.data);
+      });
+
     // animate();
     const splineLoadingBreakpointTriggered = document.getElementById(
       "splineLoadingBreakpoint"
@@ -1231,6 +1238,20 @@ const Pricing = (props) => {
   return (
     <PricingStyled className={props.className}>
       <div className="background-top"></div>
+      {/* MODALS
+MODALS
+MODALS
+MODALS */}
+      <Modal isOpen={isCMSModalOpen} onClose={handleClose}>
+        <h2 className="s1">What is a CMS?</h2>
+        <p>
+          A CMS, (short for <strong>Content Management System</strong>), is a
+          tool that helps you easily create, edit, and manage content on your
+          website without needing any assistance from us; for instance, it
+          enables you to update articles, images, or product information on your
+          website without having to know how to code.
+        </p>
+      </Modal>
       <BasicTitleText className="inner-grid desktop-inner-grid vertical-padding4 cropped-title">
         <div className="inner-container">
           <h2 className="s3 no-margin vertical-padding2 desktop-vertical-padding1 tablet-vertical-padding1 no-top">
@@ -1304,8 +1325,15 @@ const Pricing = (props) => {
           isPortrait ? `hiddenNoIntersection ${isTypingDone && "show"}` : ""
         }
       >
-        <PricingTableMobile></PricingTableMobile>
-        <PricingTableDesktop istypingdone={isTypingDone}></PricingTableDesktop>
+        <PricingTableMobile
+          priceData={priceData}
+          handleOpen={handleOpen}
+        ></PricingTableMobile>
+        <PricingTableDesktop
+          istypingdone={isTypingDone}
+          priceData={priceData}
+          handleOpen={handleOpen}
+        ></PricingTableDesktop>
         <Spacer space="4rem" desktopspace="5rem"></Spacer>
         <div style={{ position: "relative" }}>
           <div
@@ -1328,12 +1356,13 @@ const Pricing = (props) => {
               </p>
             </div>
           </BasicTitleText>
-
-          {splineLoadingBreakpointTriggered && (
+          {splineLoadingBreakpointTriggered & !isPortrait ? (
             <Spline
               className="rhombus-spline-container"
               scene="https://prod.spline.design/PaxOVLsx3FI1VvtA/scene.splinecode"
             />
+          ) : (
+            ""
           )}
         </div>
         <Spacer space="4rem" desktopspace="4rem"></Spacer>

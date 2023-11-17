@@ -78,20 +78,50 @@ export default function App({ Component, pageProps }) {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-        <meta name="msapplication-TileColor" content="#000000" />
-        <meta name="theme-color" content="#ffffff"></meta>
-        <script
-          defer
-          type="module"
-          src="https://unpkg.com/@splinetool/viewer@0.9.492/build/spline-viewer.js"
-        ></script>
+        <meta name="msapplication-TileColor" content="#090516" />
+        <meta name="theme-color" content="#ffffff" />
         {/* 
         USE https://metatags.io for meta tags
         USE https://metatags.io for meta tags
         USE https://metatags.io for meta tags
         USE https://metatags.io for meta tags 
         */}
+
+        {/* <!-- Primary Meta Tags --> */}
+        <title>VSS-BOX</title>
+        <meta name="title" content="VSS-BOX" />
+        <meta
+          name="description"
+          content="No more basic templates or messy site builders! We craft beautiful custom websites tailored to your vision. From pixels to possibilities, we're here to provide beautiful and highly functional websites."
+        />
+        <meta property="og:site_name" content="VSS-BOX"></meta>
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://vssbox.com/" />
+        <meta property="og:title" content="VSS-BOX" />
+        <meta
+          property="og:description"
+          content="No more basic templates or messy site builders! We craft beautiful custom websites tailored to your vision. From pixels to possibilities, we're here to provide beautiful and highly functional websites."
+        />
+        <meta
+          property="og:image"
+          content="https://strapi-images.sgp1.digitaloceanspaces.com/9e76ca27f86ee6be68943dc8874da5bb.jpg"
+        />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://vssbox.com/" />
+        <meta property="twitter:title" content="VSS-BOX" />
+        <meta
+          property="twitter:description"
+          content="No more basic templates or messy site builders! We craft beautiful custom websites tailored to your vision. From pixels to possibilities, we're here to provide beautiful and highly functional websites."
+        />
+        <meta
+          property="twitter:image"
+          content="https://strapi-images.sgp1.digitaloceanspaces.com/9e76ca27f86ee6be68943dc8874da5bb.jpg"
+        />
       </Head>
+
       <main
         className={`${gabarito.variable} ${poppins.variable} ${LemonMilk.variable}`}
       >
@@ -105,15 +135,18 @@ export default function App({ Component, pageProps }) {
         </ParallaxProvider>
 
         {/* This is a preload div below, if its removed you end up seeing the footer first and get CLS */}
-        <div
-          id="preloaderDiv"
-          style={{
-            background: "#090516",
-            height: "100vh",
-            width: "100vw",
-            display: hasAnimationPlayedOnce && "none",
-          }}
-        ></div>
+        {process.env.NEXT_PUBLIC_INTRO_ANIMATION_ENABLED === "true" && (
+          <div
+            id="preloaderDiv"
+            style={{
+              background: "#090516",
+              height: "100vh",
+              width: "100vw",
+              display: hasAnimationPlayedOnce && "none",
+            }}
+          ></div>
+        )}
+
         <Footer />
       </main>
     </>

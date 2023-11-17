@@ -7,12 +7,21 @@ const ThreeColSectionStyled = styled.div`
   z-index: 1;
   color: ${(props) => (props.darktheme ? "white" : "black")};
   .container {
-    margin-bottom: 8rem;
+    margin-bottom: 5rem;
     position: relative;
   }
   .image-container {
     position: relative;
     margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 62vw;
+    @media ${GlobalVariables.device.tablet} {
+      width: 75%;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
     img {
       height: 100%;
       width: 100%;
@@ -23,22 +32,23 @@ const ThreeColSectionStyled = styled.div`
         z-index: 0;
       }
     }
+
     .step-number {
-      font-size: 7rem;
+      font-size: 4rem;
       position: absolute;
-      top: -2rem;
+      top: 0rem;
+      left: 6rem;
       font-family: var(--font3);
       z-index: 2;
-    }
-    @media ${GlobalVariables.device.tablet} {
-      width: 100%;
-      height: auto;
-      margin-left: auto;
-      margin-right: auto;
+      display: none;
+      @media ${GlobalVariables.device.laptop} {
+        display: none;
+      }
     }
   }
 
   .text-container {
+    text-align: ${(props) => (props.leftalign === "true" ? "left" : "center")};
     h3 {
       text-transform: uppercase;
       margin-bottom: 1em;
@@ -48,7 +58,6 @@ const ThreeColSectionStyled = styled.div`
     }
     h3,
     p {
-      text-align: ${(props) => (props.leftalign ? "left" : "center")};
     }
     button {
       margin-left: auto;
@@ -69,6 +78,10 @@ const ThreeColSectionStyled = styled.div`
         min-height: 4em;
       }
     }
+    .step-number-inline {
+      @media ${GlobalVariables.device.laptop} {
+      }
+    }
     @media ${GlobalVariables.device.laptop} {
       &.price-details {
         p:not(.large) {
@@ -87,8 +100,8 @@ const ThreeColSectionStyled = styled.div`
       height: 1px;
       background: #323044;
       width: 50%;
-      top: 8.7rem;
-      right: -64%;
+      top: 5.7rem;
+      right: -63%;
     }
   }
 

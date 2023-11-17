@@ -11,13 +11,13 @@ const ButtonStyled = styled.div`
   .button-inner-container {
     display: inline-block;
     background-color: rgba(255, 255, 255, 0);
-    padding: 1.4rem 2rem;
+
     font-size: 0.82rem;
     font-family: var(--font1), sans-serif;
     margin-top: 1em;
     outline: none;
     border: 1px solid white;
-    cursor: pointer;
+
     text-transform: uppercase;
     letter-spacing: 2px;
     border-radius: 100vw;
@@ -51,8 +51,12 @@ const ButtonStyled = styled.div`
     `};
   }
 
-  cursor: pointer;
   a {
+    padding: 1.4rem 2rem;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    height: 100%;
   }
 `;
 

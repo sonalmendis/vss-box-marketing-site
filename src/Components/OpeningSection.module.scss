@@ -9,6 +9,8 @@ $grey: #8f9294;
   justify-content: center;
   align-items: center;
   transform: scale(2);
+  z-index: 3;
+  position: relative;
   @keyframes scaleIn {
     from {
       transform: scale(2);
@@ -160,6 +162,30 @@ $grey: #8f9294;
             transform: translateY(4.5vw) rotateX(-90deg);
           }
 
+          @include gvars.landscape {
+            width: 2vw;
+            height: 2vw;
+            &.front {
+              transform: translateZ(1vw);
+            }
+            &.back {
+              transform: translateZ(-1vw) rotateY(180deg);
+            }
+            &.left {
+              transform: translateX(-1vw) rotateY(-90deg);
+            }
+
+            &.right {
+              transform: translateX(1vw) rotateY(90deg);
+            }
+            &.top {
+              transform: translateY(-1vw) rotateX(90deg);
+            }
+
+            &.bottom {
+              transform: translateY(1vw) rotateX(-90deg);
+            }
+          }
           @include gvars.laptop {
             width: 2vw;
             height: 2vw;

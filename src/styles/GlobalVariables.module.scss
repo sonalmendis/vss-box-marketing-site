@@ -8,47 +8,51 @@ $sizes: (
   "laptop": "1024px",
   "laptopL": "1440px",
   "desktopL": "1920px",
-  "desktopXL": "2560px"
+  "desktopXL": "2560px",
 );
 
+@mixin mobileM {
+  @media (min-width: map.get($sizes, "mobileM")) {
+    @content;
+  }
+}
 
+@mixin mobileL {
+  @media (min-width: map.get($sizes, "mobileL")) {
+    @content;
+  }
+}
 
-  @mixin mobileM {
-    @media (min-width: map.get($sizes, "mobileM")) {
-      @content;
-    }
+@mixin tablet {
+  @media (min-width: map.get($sizes, "tablet")) {
+    @content;
   }
-  
-  @mixin mobileL {
-    @media (min-width: map.get($sizes, "mobileL")) {
-      @content;
-    }
+}
+@mixin laptop {
+  @media (min-width: map.get($sizes, "laptop")) and (orientation: landscape) {
+    @content;
   }
-  
-  @mixin tablet {
-    @media (min-width: map.get($sizes, "tablet")) {
-      @content;
-    }
+}
+@mixin laptopL {
+  @media (min-width: map.get($sizes, "laptopL")) {
+    @content;
   }
-  @mixin laptop {
-    @media (min-width: map.get($sizes, "laptop")) and (orientation: landscape) {
-      @content;
-    }
+}
+
+@mixin desktopL {
+  @media (min-width: map.get($sizes, "desktopL")) {
+    @content;
   }
-  @mixin laptopL {
-    @media (min-width: map.get($sizes, "laptopL")) {
-      @content;
-    }
+}
+
+@mixin desktopXL {
+  @media (min-width: map.get($sizes, "desktopXL")) {
+    @content;
   }
-  
-  @mixin desktopL {
-    @media (min-width: map.get($sizes, "desktopL")) {
-      @content;
-    }
+}
+
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
   }
-  
-  @mixin desktopXL {
-    @media (min-width: map.get($sizes, "desktopXL")) {
-      @content;
-    }
-  }
+}

@@ -7,7 +7,7 @@ import Image from "next/image";
 import Logo from "../../public/img/logo-landscape.svg";
 import Button from "./Button";
 import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
-
+import { useRouter } from "next/router";
 //images
 import telephoneIcon from "../../public/img/vectors/phone-icon.svg";
 import mailIcon from "../../public/img/vectors/mail-icon.svg";
@@ -24,7 +24,7 @@ const Header = () => {
   const isDesktop = useMediaQuery({
     query: `${GlobalVariables.device.laptop}`,
   });
-
+  const router = useRouter();
   // Define a function to toggle the menu state when the button is clicked
   const handleMenuButtonClick = (el) => {
     if (!isDesktop) {
@@ -38,6 +38,11 @@ const Header = () => {
           setIsMenuOpen(true);
           document.body.style.overflowY = "hidden";
         }
+      }
+    } else {
+      const regex = /^\/$/;
+      if (regex.test(router.pathname)) {
+        window.scrollTo(0, 0);
       }
     }
   };
@@ -189,15 +194,15 @@ IDFK WHY BUT IT DOES SO I'M LEAVING IT AS IS
           >
             <div className={`${styles["inner-container"]}`}>
               <div className={`${styles["col"]}`}>
-                {/* phone icon and number */}
-
-                <Image src={telephoneIcon} alt="Phone Icon" />
-                <span>077 954 0606</span>
-              </div>
-              <div className={`${styles["col"]}`}>
-                {/* email icon and email address */}
-                <Image src={mailIcon} alt="Phone Icon" />
-                <span>contact@vssbox.com</span>
+                <Button
+                  type="2"
+                  target="_blank"
+                  refferer="no-referrer"
+                  href="https://cal.com/sonal-mendis-awdbhl/30min"
+                  className="vertical-padding2"
+                >
+                  Book a meeting now!
+                </Button>
               </div>
             </div>
           </div>

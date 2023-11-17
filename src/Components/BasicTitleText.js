@@ -3,8 +3,10 @@ import styled from "styled-components";
 import * as GlobalVariables from "@/styles/GlobalVariables";
 
 const BasicTitleTextStyled = styled.div`
+  z-index: 5;
+  position: relative;
   .title-container {
-    text-align: left;
+    text-align: ${(props) => (props.center ? "center" : "left")};
     h2 {
       margin-bottom: 0.5em;
     }
@@ -35,7 +37,7 @@ const BasicTitleTextStyled = styled.div`
 
 const BasicTitleText = (props) => {
   return (
-    <BasicTitleTextStyled className={props.className}>
+    <BasicTitleTextStyled className={props.className} center={props.center}>
       {
         props.children /* this injects the content from wherever its used as a HOC, that way you can call the BasicTitleText component and put your own text */
       }

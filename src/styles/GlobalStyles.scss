@@ -280,9 +280,12 @@ body {
 html {
   font-size: 100%;
   width: 100%;
-
+  // scroll-behavior: smooth;
   @include gvars.tablet {
     font-size: 2.4vw;
+  }
+  @include gvars.landscape {
+    font-size: 1vw;
   }
   @include gvars.laptop {
     font-size: 1vw;
@@ -344,6 +347,9 @@ body.menu-expanded {
   &.no-top {
     padding-top: 0;
   }
+  &.no-bottom {
+    padding-bottom: 0;
+  }
 }
 .vertical-padding2 {
   padding-top: 2rem;
@@ -351,12 +357,18 @@ body.menu-expanded {
   &.no-top {
     padding-top: 0;
   }
+  &.no-bottom {
+    padding-bottom: 0;
+  }
 }
 .vertical-padding3 {
   padding-top: 3rem;
   padding-bottom: 3rem;
   &.no-top {
     padding-top: 0;
+  }
+  &.no-bottom {
+    padding-bottom: 0;
   }
 }
 
@@ -366,6 +378,9 @@ body.menu-expanded {
   &.no-top {
     padding-top: 0;
   }
+  &.no-bottom {
+    padding-bottom: 0;
+  }
 }
 
 .vertical-padding5 {
@@ -373,6 +388,9 @@ body.menu-expanded {
   padding-bottom: 5rem;
   &.no-top {
     padding-top: 0;
+  }
+  &.no-bottom {
+    padding-bottom: 0;
   }
 }
 
@@ -382,6 +400,9 @@ body.menu-expanded {
   &.no-top {
     padding-top: 0;
   }
+  &.no-bottom {
+    padding-bottom: 0;
+  }
 }
 
 .vertical-padding7 {
@@ -389,6 +410,9 @@ body.menu-expanded {
   padding-bottom: 7rem;
   &.no-top {
     padding-top: 0;
+  }
+  &.no-bottom {
+    padding-bottom: 0;
   }
 }
 
@@ -398,6 +422,9 @@ body.menu-expanded {
   &.no-top {
     padding-top: 0;
   }
+  &.no-bottom {
+    padding-bottom: 0;
+  }
 }
 
 .vertical-padding9 {
@@ -405,6 +432,9 @@ body.menu-expanded {
   padding-bottom: 9rem;
   &.no-top {
     padding-top: 0;
+  }
+  &.no-bottom {
+    padding-bottom: 0;
   }
 }
 
@@ -414,6 +444,9 @@ body.menu-expanded {
   &.no-top {
     padding-top: 0;
   }
+  &.no-bottom {
+    padding-bottom: 0;
+  }
 }
 
 .vertical-padding11 {
@@ -422,6 +455,9 @@ body.menu-expanded {
   &.no-top {
     padding-top: 0;
   }
+  &.no-bottom {
+    padding-bottom: 0;
+  }
 }
 
 .vertical-padding12 {
@@ -429,6 +465,9 @@ body.menu-expanded {
   padding-bottom: 12rem;
   &.no-top {
     padding-top: 0;
+  }
+  &.no-bottom {
+    padding-bottom: 0;
   }
 }
 
@@ -471,6 +510,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .tablet-vertical-padding2 {
@@ -478,6 +520,9 @@ body.menu-expanded {
     padding-bottom: 2rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -487,6 +532,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .tablet-vertical-padding4 {
@@ -494,6 +542,9 @@ body.menu-expanded {
     padding-bottom: 4rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -503,6 +554,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .tablet-vertical-padding6 {
@@ -510,6 +564,9 @@ body.menu-expanded {
     padding-bottom: 6rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -519,6 +576,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .tablet-vertical-padding8 {
@@ -526,6 +586,9 @@ body.menu-expanded {
     padding-bottom: 8rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -535,6 +598,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .tablet-vertical-padding10 {
@@ -542,6 +608,9 @@ body.menu-expanded {
     padding-bottom: 10rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -551,6 +620,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .tablet-vertical-padding12 {
@@ -558,6 +630,9 @@ body.menu-expanded {
     padding-bottom: 12rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 }
@@ -625,6 +700,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .desktop-vertical-padding2 {
@@ -632,6 +710,9 @@ body.menu-expanded {
     padding-bottom: 2rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -641,6 +722,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .desktop-vertical-padding4 {
@@ -648,6 +732,9 @@ body.menu-expanded {
     padding-bottom: 4rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -657,6 +744,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .desktop-vertical-padding6 {
@@ -664,6 +754,9 @@ body.menu-expanded {
     padding-bottom: 6rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -673,6 +766,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .desktop-vertical-padding8 {
@@ -680,6 +776,9 @@ body.menu-expanded {
     padding-bottom: 8rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -689,6 +788,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .desktop-vertical-padding10 {
@@ -696,6 +798,9 @@ body.menu-expanded {
     padding-bottom: 10rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 
@@ -705,6 +810,9 @@ body.menu-expanded {
     &.no-top {
       padding-top: 0;
     }
+    &.no-bottom {
+      padding-bottom: 0;
+    }
   }
 
   .desktop-vertical-padding12 {
@@ -712,6 +820,9 @@ body.menu-expanded {
     padding-bottom: 12rem;
     &.no-top {
       padding-top: 0;
+    }
+    &.no-bottom {
+      padding-bottom: 0;
     }
   }
 }
@@ -741,6 +852,7 @@ h1 {
   font-size: 2.2rem;
   font-style: normal;
   text-transform: uppercase;
+
   @include gvars.tablet {
     font-size: 3rem;
   }
@@ -809,7 +921,7 @@ h3 {
   font-size: 0.7rem;
   text-align: center;
   // margin-top: 1em;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   display: inline-block;
   font-family: var(--font2), sans-serif;

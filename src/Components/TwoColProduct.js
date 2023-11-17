@@ -39,7 +39,7 @@ align-items: center;
     z-index:1;
   }
   .textbg-container{
-    z-index:0;
+    z-index:-1;
  position:absolute;
  right: -11rem;
  width: 200vw;

@@ -2,13 +2,13 @@
 import * as GlobalVariables from "@/styles/GlobalVariables";
 import homeStyles from "@/styles/index.module.scss";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
-import { Parallax, useParallax } from "react-scroll-parallax";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
+import { Parallax, useParallax } from "react-scroll-parallax";
 // import Spline from "@splinetool/react-spline";
 // IMAGES
+import backgroundPort from "../../public/img/background-portrait.webp";
 import background from "../../public/img/background3.webp";
 import LogoMiddle from "../../public/img/dark-middle-logo.svg";
 import leftCircle from "../../public/img/vectors/leftCircle.svg";
@@ -21,40 +21,57 @@ import gem1Outline from "../../public/img/vectors/gem1-outline.svg";
 import gem2Outline from "../../public/img/vectors/gem2-outline.svg";
 import gem3Outline from "../../public/img/vectors/gem3-outline.svg";
 import gem4Outline from "../../public/img/vectors/gem4-outline.svg";
-import pyramid1 from "../../public/img/bitmaps/pyramid1.png";
 
 //3 step
+import step3Illustration from "../../public/img/vectors/step-deploy.png";
 import step1Illustration from "../../public/img/vectors/step-design.svg";
-
 import step2Illustration from "../../public/img/vectors/step-develop.svg";
 
-import step3Illustration from "../../public/img/vectors/step-deploy.png";
+//for x section
+import companiesMockupPort from "../../public/img/bitmaps/companies-mockup-port.webp";
+import creativesMockupPort from "../../public/img/bitmaps/creatives-mockup-port.webp";
+
+//tools
+import adobeIcon from "../../public/img/tools-icons/adobe.svg";
+import digitaloceanIcon from "../../public/img/tools-icons/digitalocean.svg";
+import nextjsIcon from "../../public/img/tools-icons/nextjs.svg";
+import reactIcon from "../../public/img/tools-icons/react.svg";
+import strapiIcon from "../../public/img/tools-icons/strapi.svg";
 
 //COMPONENTS
 import AlternatingRow from "@/Components/AlternatingRow";
 import Button from "@/Components/Button";
 import ContactForm from "@/Components/ContactForm";
+import FaqSection from "@/Components/FaqSection";
 import GradientBorder from "@/Components/GradientBorder";
 import GradientBorderStyles from "@/Components/GradientBorder.module.scss";
 import IntroSection from "@/Components/IntroSection";
 import IntroSectionStyles from "@/Components/IntroSection.module.scss";
+import Logobar from "@/Components/Logobar";
+import MockupSection from "@/Components/MockupSection";
 import OpeningSection from "@/Components/OpeningSection";
 import OpeningSectionStyles from "@/Components/OpeningSection.module.scss";
 import ScrollDownArrow from "@/Components/ScrollDownArrow2";
 import Spacer from "@/Components/Spacer";
 import ThreeColSection from "@/Components/ThreeColSection";
-import TwoColProduct from "@/Components/TwoColProduct";
 import BasicTitleText from "../Components/BasicTitleText";
-import MockupSection from "@/Components/MockupSection";
+// import { getServerSideProps } from "next/dist/build/templates/pages";
 
 export default function Home(props) {
-  const disableOpeningAnimation = false; // For development purposes
+  const [priceData, setPriceData] = useState(null);
+
+  const disableOpeningAnimation =
+    process.env.NEXT_PUBLIC_INTRO_ANIMATION_ENABLED === "true" ? false : true; // For development purposes
   const sethasAnimationPlayedOnce = props.sethasAnimationPlayedOnce;
   const hasAnimationPlayedOnce = disableOpeningAnimation
     ? true
     : props.hasAnimationPlayedOnce;
   const isPortrait = useMediaQuery({
     query: `${GlobalVariables.device.portrait}`,
+  });
+
+  const isTablet = useMediaQuery({
+    query: `${GlobalVariables.device.tablet}`,
   });
 
   // const gem1ref = useRef(null);
@@ -92,44 +109,49 @@ export default function Home(props) {
     });
   };
   const gem1parallax = useParallax({
-    speed: 12,
+    speed: 22,
+    startScroll: 0,
+    endScroll: 1500,
   });
   const gem2parallax = useParallax({
-    speed: 8,
+    speed: 18,
+    startScroll: 0,
+    endScroll: 1500,
   });
   const gem3parallax = useParallax({
-    speed: 4,
+    speed: 14,
+    startScroll: 0,
+    endScroll: 1500,
   });
   const gem4parallax = useParallax({
-    speed: 35,
+    speed: 45,
+    startScroll: 0,
+    endScroll: 1500,
   });
   // const gem4bparallax = useParallax({
   //   speed: 38,
   // });
 
   const gem1OutlineParallax = useParallax({
-    speed: 8,
+    speed: 18,
+    startScroll: 0,
+    endScroll: 1500,
   });
   const gem2OutlineParallax = useParallax({
-    speed: 10,
+    speed: 20,
+    startScroll: 0,
+    endScroll: 1500,
   });
   const gem3OutlineParallax = useParallax({
-    speed: 5,
+    speed: 15,
+    startScroll: 0,
+    endScroll: 1500,
   });
   const gem4OutlineParallax = useParallax({
-    speed: 32,
+    speed: 42,
+    startScroll: 0,
+    endScroll: 1500,
   });
-
-  // const mockupParallax = useParallax({
-  //   speed: 15,
-  // });
-
-  // const theparallax = useParallax({
-  //   speed: 15,
-  // });
-  // const theparallax2 = useParallax({
-  //   speed: 15,
-  // });
 
   useEffect(() => {
     // Handle the intro animation and remove the event listener once the animation is done
@@ -149,7 +171,6 @@ export default function Home(props) {
       console.log(introAnimationContainer);
 
       const handleAnimationEnd = (event) => {
-        console.log(event);
         if (event.animationName.includes("scaleIn")) {
           // console.log("Scale in animation ended");
           htmlTag.style.overflowY = "auto";
@@ -167,6 +188,15 @@ export default function Home(props) {
         handleAnimationEnd
       );
     }
+
+    // Load price data:
+    fetch(
+      "https://seashell-app-23kzq.ondigitalocean.app/api/pricings?sort=Rank&populate=*"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setPriceData(data.data);
+      });
 
     // querySelectorAll is used here instead of useRef because useRef doesn't work easily with multiple elements of the same class
     const hiddenElementsRef = document.querySelectorAll(".hidden");
@@ -219,14 +249,26 @@ export default function Home(props) {
           }`}
         >
           <div className={OpeningSectionStyles.backgroundContainer}>
-            <Image
-              src={background}
-              className={OpeningSectionStyles.background}
-              alt="background"
-              sizes="100vw"
-              quality={100}
-              priority
-            />
+            {isPortrait & !isTablet ? (
+              <Image
+                src={backgroundPort}
+                className={OpeningSectionStyles.background}
+                alt="background"
+                sizes="100vw"
+                quality={100}
+                priority
+              />
+            ) : (
+              <Image
+                src={background}
+                className={OpeningSectionStyles.background}
+                alt="background"
+                sizes="100vw"
+                quality={100}
+                priority
+              />
+            )}
+
             <ScrollDownArrow></ScrollDownArrow>
             {/* Cube container */}
             <div className={OpeningSectionStyles.cubeContainer}>
@@ -487,17 +529,17 @@ export default function Home(props) {
         <BasicTitleText className="inner-grid desktop-inner-grid4">
           <div className="title-container">
             <p className="large">
-              We’re bridging the gap between complicated expensive websites,
-              basic templates and messy site builders to bring you a simple
-              website-as-product service so you can get an awesome expert-made
-              website tailored to your vision
+              No more basic templates or messy site builders! We craft beautiful
+              custom websites tailored to your vision. From pixels to
+              possibilities, we're here to provide beautiful and highly
+              functional websites.
             </p>
           </div>
           <Button
             type="2"
             target="_blank"
             refferer="no-referrer"
-            center="true"
+            center={isTablet ? true : false}
             href="https://cal.com/sonal-mendis-awdbhl/30min"
             className="vertical-padding2"
           >
@@ -523,18 +565,18 @@ export default function Home(props) {
         FOR X SECTION
         FOR X SECTION
         FOR X SECTION */}
-        <BasicTitleText className="inner-grid desktop-inner-grid3">
+        {/* <BasicTitleText className="inner-grid desktop-inner-grid3">
           <div className="title-container">
             <h2 className="s3">Who is VSS-BOX for?</h2>
           </div>
-        </BasicTitleText>
+        </BasicTitleText> */}
 
         <div>
           <AlternatingRow
             side="right"
-            className="vertical-padding-normal hidden-parent for-x-section"
+            className="vertical-padding-normal for-x-section"
           >
-            <div className="hidden hidden-offset"></div>
+            <div className=""></div>
 
             <>
               <picture>
@@ -593,7 +635,7 @@ export default function Home(props) {
               </picture>
 
               <div className="inner-content-container tablet-inner-grid desktop-inner-grid">
-                <div className="text-container outer-grid mockup-section">
+                <div className="text-container inner-grid mockup-section">
                   <div className="inner-container">
                     <h1 className="">For Creatives</h1>
 
@@ -607,27 +649,12 @@ export default function Home(props) {
                 </div>
 
                 <div className="image-container outer-grid mockup">
-                  <picture>
-                    <source
-                      srcSet={`
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp 2137w,
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp?tr=w-2048 2048w,
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp?tr=w-1860 1860w,
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp?tr=w-1640 1640w,
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp?tr=w-1400 1400w,
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp?tr=w-1100 1100w,
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp?tr=w-800 800w,
-                        https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp?tr=w-256 256w,
-                        
-                        `}
-                      sizes="(min-width: 1040px) calc(38.98vw - 71px), (min-width: 780px) 71.67vw, (min-width: 540px) 441px, calc(90.91vw - 32px)"
-                    />
-                    <img
-                      src="https://ik.imagekit.io/kx65wqg4n/ae3cec60e2615c7ef796b3cb1f4b7744.webp"
-                      alt="Creative Mockup"
-                      loading={"lazy"}
-                    />
-                  </picture>
+                  <Image
+                    src={creativesMockupPort}
+                    alt="Creatives Mockup"
+                    quality={85}
+                    sizes="(orientation:landscape) 50vw, 95vw"
+                  />
                 </div>
               </div>
             </>
@@ -635,9 +662,9 @@ export default function Home(props) {
 
           <AlternatingRow
             side="left"
-            className="vertical-padding-normal hidden-parent for-x-section"
+            className="vertical-padding-normal for-x-section"
           >
-            <div className="hidden hidden-offset"></div>
+            <div className=""></div>
 
             <>
               <picture>
@@ -697,7 +724,7 @@ export default function Home(props) {
               </picture>
 
               <div className="inner-content-container tablet-inner-grid desktop-inner-grid">
-                <div className="text-container outer-grid mockup-section">
+                <div className="text-container inner-grid mockup-section">
                   <div className="inner-container">
                     <h1>For Companies</h1>
 
@@ -711,51 +738,36 @@ export default function Home(props) {
 
                 <div className="image-container outer-grid mockup">
                   <Parallax speed={0}>
-                    <picture>
-                      <source
-                        srcSet={`
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp 2137w,
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp?tr=w-2048 2048w,
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp?tr=w-1860 1860w,
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp?tr=w-1640 1640w,
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp?tr=w-1400 1400w,
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp?tr=w-1100 1100w,
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp?tr=w-800 800w,
-                        https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp?tr=w-256 256w,
-                        
-                        `}
-                        sizes="(min-width: 1040px) calc(38.98vw - 71px), (min-width: 780px) 71.67vw, (min-width: 540px) 441px, calc(90.91vw - 32px)"
-                      />
-                      <img
-                        src="https://ik.imagekit.io/kx65wqg4n/32aa3557e13183202530f8bba930445b.webp"
-                        alt="Company mockup"
-                        loading={"lazy"}
-                      />
-                    </picture>
+                    <Image
+                      src={companiesMockupPort}
+                      alt="Companies Mockup"
+                      quality={95}
+                      sizes="(orientation:landscape) 50vw, 95vw"
+                    />
                   </Parallax>
                 </div>
               </div>
             </>
           </AlternatingRow>
         </div>
-        {/* <iframe
-          src="https://my.spline.design/untitled-769349b090d92e092469cbc979329017/"
-          style={{ height: "50rem" }}
-          frameborder="0"
-          width="100%"
-          height="100%"
-        ></iframe> */}
+
+        <Spacer space="4rem" />
+
         {/* 3 STEP PROCESS SECTION */}
         {/* 3 STEP PROCESS SECTION */}
-        <BasicTitleText className="outer-grid desktop-inner-grid3 vertical-padding5">
+        <BasicTitleText
+          center="true"
+          className="inner-grid desktop-inner-grid vertical-padding2"
+        >
           <div className="title-container">
+            <h3>How it works</h3>
             <h2>Simple 3-step Process</h2>
           </div>
         </BasicTitleText>
         <ThreeColSection
           darktheme="true"
-          leftalign="true"
-          className="vertical-padding-normal no-top outer-grid tablet-inner-grid4 desktop-inner-grid2"
+          leftalign="false"
+          className="vertical-padding-normal no-top inner-grid tablet-inner-grid4 desktop-inner-grid2"
           spacing="12rem"
         >
           <div className="container hidden">
@@ -766,11 +778,12 @@ export default function Home(props) {
             </div>
 
             <div className="text-container">
-              <h2>Design</h2>
+              <h2>
+                <span className="step-number-inline">1. </span>Design
+              </h2>
               <p className="faded">
-                We provide you with a form so you can easily give us all the
-                details about the website you want us to make including basic
-                details, what type of website, does it need a domain? etc.
+                First we collect all the info about your site and then provide
+                you with design directions to choose from
               </p>
             </div>
             <div className="connector-line-graphic"></div>
@@ -784,12 +797,12 @@ export default function Home(props) {
             </div>
 
             <div className="text-container">
-              <h2>Develop</h2>
+              <h2>
+                <span className="step-number-inline">2. </span>Develop
+              </h2>
               <p className="faded">
-                Once your details have been provided we will immediately produce
-                4-6 visual directions as a first draft so you can choose the
-                direction you like the most. Once you have chosen a direction we
-                will finalize the design and code it!
+                Once a design direction has been chosen we will go ahead and
+                code it in!
               </p>
             </div>
             <div className="connector-line-graphic"></div>
@@ -809,14 +822,12 @@ export default function Home(props) {
             </div>
 
             <div className="text-container">
-              <h2>Deploy</h2>
+              <h2>
+                <span className="step-number-inline">3. </span>Deploy
+              </h2>
               <p className="faded">
-                Once the design + code is complete we will wrap up the site for
-                you with all the details, documentation, server details and
-                domain info so you know exactly what’s going on<br></br>
-                <br></br> We will give you the keys to the site while also
-                maintaining it after project completion so it stays up and
-                running smoothly.
+                Once coding is finalized we will deploy the site live while
+                maintaining it on our server
               </p>
             </div>
           </div>
@@ -824,6 +835,88 @@ export default function Home(props) {
             View Full Process
           </Button> */}
         </ThreeColSection>
+
+        <BasicTitleText center="true" className="outer-grid vertical-padding2">
+          <div className="title-container">
+            <h3 className="vertical-padding no-top">Tools we use</h3>
+          </div>
+        </BasicTitleText>
+
+        <Logobar className="outer-grid tablet-inner-grid2 desktop-inner-grid4">
+          <div className="inner-container">
+            <div className="logo-container">
+              <Image src={adobeIcon} alt="Adobe icon" />
+              <h3>Adobe</h3>
+            </div>
+            <div className="logo-container">
+              <Image src={reactIcon} alt="React icon" />
+              <h3>React</h3>
+            </div>
+            <div className="logo-container">
+              <Image src={nextjsIcon} alt="Nextjs icon" />
+              <h3>Nextjs</h3>
+            </div>
+            <div className="logo-container">
+              <Image src={strapiIcon} alt="Strapi icon" />
+              <h3>Strapi</h3>
+            </div>
+            <div className="logo-container">
+              <Image src={digitaloceanIcon} alt="DigitalOcean icon" />
+              <h3>
+                Digital<br></br>Ocean
+              </h3>
+            </div>
+          </div>
+        </Logobar>
+
+        <BasicTitleText center="true" className="outer-grid vertical-padding2">
+          <div className="title-container">
+            <h3 className="vertical-padding no-top">Pricing</h3>
+          </div>
+        </BasicTitleText>
+
+        <Logobar className="outer-grid tablet-inner-grid2 desktop-inner-grid3">
+          <div className="inner-container">
+            <div className="logo-container">
+              <div className="price-container basic">
+                <h2 className="price-title">
+                  {priceData && priceData[0].attributes.price_class}
+                </h2>
+                <p>{priceData && priceData[0].attributes.price_desc}</p>
+                <h2 className="s3">
+                  {priceData && priceData[0].attributes.price}
+                </h2>
+              </div>
+            </div>
+            <div className="logo-container">
+              <div className="price-container pro">
+                <h2 className="price-title">
+                  {priceData && priceData[1].attributes.price_class}
+                </h2>
+                <p> {priceData && priceData[1].attributes.price_desc}</p>
+                <h2 className="s3">
+                  {priceData && priceData[1].attributes.price}
+                </h2>
+              </div>
+            </div>
+            <div className="logo-container">
+              <div className="price-container bespoke">
+                <h2 className="price-title">
+                  {priceData && priceData[2].attributes.price_class}
+                </h2>
+                <p> {priceData && priceData[2].attributes.price_desc}</p>
+                <h2 className="s3">
+                  {priceData && priceData[2].attributes.price}
+                </h2>
+              </div>
+            </div>
+          </div>
+        </Logobar>
+        <Button center="true" href="/pricing">
+          View full pricing
+        </Button>
+        <Spacer space="5rem" />
+        <FaqSection className="inner-grid"></FaqSection>
         {/* 
         <div
           className={`${homeStyles.mockupContainer} vertical-padding2 outer-grid desktop-inner-grid5`}
@@ -841,7 +934,10 @@ export default function Home(props) {
         CONTACT section
         CONTACT section
          */}
-        <ContactForm className="inner-grid tablet-inner-grid desktop-inner-grid4 vertical-padding5" />
+        <ContactForm
+          noform="true"
+          className="inner-grid tablet-inner-grid desktop-inner-grid4 vertical-padding5 no-bottom"
+        />
       </div>
     </>
   );

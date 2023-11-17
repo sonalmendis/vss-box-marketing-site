@@ -10,7 +10,7 @@ import mailIcon from "../../public/img/social-icons/mail-icon.svg";
 import telephoneIcon from "../../public/img/social-icons/telephone-icon.svg";
 const Footer = (props) => {
   return (
-    <div className={`${styles.FooterWrapper} vertical-padding2`}>
+    <div className={`${styles.FooterWrapper} vertical-padding1`}>
       <div className={`${styles.innerContainer} outer-grid`}>
         <div className={styles.emailPhone}>
           {/* <div>

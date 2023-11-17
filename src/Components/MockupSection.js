@@ -33,6 +33,48 @@ const MockupSectionStyled = styled.div`
       bottom: -5.5rem;
     }
   }
+
+  .carousel .control-arrow,
+  .carousel.carousel-slider .control-arrow {
+    opacity: 1;
+  }
+
+  .carousel .control-next.control-arrow:before {
+    border-left: 8px solid #000628;
+    border-right: 8px solid transparent !important;
+    left: -0.2rem !important;
+  }
+  .carousel .control-arrow:before,
+  .carousel.carousel-slider .control-arrow:before {
+    border-right: 8px solid #000628;
+    margin: 0;
+    position: absolute;
+    top: 0;
+
+    margin: auto;
+    height: 10px;
+    top: 12rem;
+    width: auto;
+    z-index: 2;
+    left: 0.3rem;
+  }
+  .carousel .control-arrow:after,
+  .carousel.carousel-slider .control-arrow:after {
+    margin: 0 5px;
+    display: inline-block;
+
+    height: 3rem;
+    width: 3rem;
+    content: "";
+    margin: 0;
+    position: absolute;
+    top: 11rem;
+    margin: auto;
+
+    background: white;
+    border-radius: 100%;
+    left: -1.2rem;
+  }
 `;
 
 const MockupSection = (props) => {
@@ -48,12 +90,13 @@ const MockupSection = (props) => {
         infiniteLoop={true}
         showStatus={false}
         showIndicators={true}
-        swipeable={true}
+        swipeable={false}
         showThumbs={false}
         centerMode={true}
         centerSlidePercentage={isPortrait ? 150 : 120}
         useKeyboardArrows={true}
-        showArrows={isPortrait ? false : true}
+        swipeScrollTolerance={25}
+        showArrows={true}
       >
         <TwoColProduct
           side="left"
@@ -83,10 +126,9 @@ const MockupSection = (props) => {
             )}
 
             {/* <Parallax speed={-8} className="circles-container"> */}
-            <div className="sphere sphere1"></div>
 
             <div className="sphere sphere2"></div>
-            <div className="sphere sphere3"></div>
+
             {/* </Parallax> */}
           </div>
 
@@ -175,10 +217,7 @@ DWELLANT */}
 
             {/* <Parallax speed={-8} className="circles-container"> */}
 
-            <div className="sphere sphere1"></div>
-
             <div className="sphere sphere2"></div>
-            <div className="sphere sphere3"></div>
 
             {/* </Parallax> */}
           </div>
@@ -247,10 +286,7 @@ DWELLANT */}
 
             {/* <Parallax speed={-8} className="circles-container"> */}
 
-            <div className="sphere sphere1"></div>
-
             <div className="sphere sphere2"></div>
-            <div className="sphere sphere3"></div>
 
             {/* </Parallax> */}
           </div>
@@ -316,10 +352,7 @@ ROAR
 
             {/* <Parallax speed={-8} className="circles-container"> */}
 
-            <div className="sphere sphere1"></div>
-
             <div className="sphere sphere2"></div>
-            <div className="sphere sphere3"></div>
 
             {/* </Parallax> */}
           </div>
@@ -387,10 +420,7 @@ MYNOTT
 
             {/* <Parallax speed={-8} className="circles-container"> */}
 
-            <div className="sphere sphere1"></div>
-
             <div className="sphere sphere2"></div>
-            <div className="sphere sphere3"></div>
 
             {/* </Parallax> */}
           </div>
@@ -461,10 +491,7 @@ AAQILL
 
             {/* <Parallax speed={-8} className="circles-container"> */}
 
-            <div className="sphere sphere1"></div>
-
             <div className="sphere sphere2"></div>
-            <div className="sphere sphere3"></div>
 
             {/* </Parallax> */}
           </div>

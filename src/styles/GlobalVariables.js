@@ -1,6 +1,7 @@
 export const colours = {
   white: "#ffffff",
   black: "#000000",
+  purple: "#090516",
 };
 
 // This doesn't get used directly and is only used for the 'device' const below
