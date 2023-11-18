@@ -27,3 +27,6 @@ jobs:
           pm2 start 1
           pm2 save
           sudo service nginx restart
+      - name: "Create env file"
+        run: |
+          echo "${{ secrets.ENV_FILE }}" > .env.local
