@@ -141,12 +141,14 @@ const MockupSection = (props) => {
                 quality={100}
                 src={inboxIQMokcupPortrait}
                 alt="InboxIQ Mockup"
+                sizes="85vw"
               />
             ) : (
               <Image
                 quality={100}
                 src={inboxIQMockupLand}
                 alt="InboxIQ Mockup"
+                sizes="50vw"
               />
             )}
 
@@ -235,6 +237,7 @@ DWELLANT */}
                 quality={100}
                 src={dwellantMockupPort}
                 alt="InboxIQ Mockup"
+                sizes="85vw"
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
               />
             ) : (
@@ -242,6 +245,7 @@ DWELLANT */}
                 quality={100}
                 src={dwellantMockupLand}
                 alt="Dwellant Mockup"
+                sizes="50vw"
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
               />
             )}
@@ -314,6 +318,7 @@ DWELLANT */}
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
                 quality={100}
                 src={dayaMockupPortrait}
+                sizes="85vw"
                 alt="Daya Mockup"
               />
             ) : (
@@ -321,6 +326,7 @@ DWELLANT */}
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
                 quality={100}
                 src={dayaMockupLand}
+                sizes="50vw"
                 alt="Daya Mockup"
               />
             )}
@@ -387,6 +393,7 @@ ROAR
                 quality={100}
                 src={roarMockupPortrait}
                 alt="Roar Mockup"
+                sizes="85vw"
               />
             ) : (
               <Image
@@ -394,6 +401,7 @@ ROAR
                 quality={100}
                 src={roarMockLand}
                 alt="Roar Mockup"
+                sizes="50vw"
               />
             )}
 
@@ -462,6 +470,7 @@ AAQILL
                 src={aaqillMokckupPortrait}
                 alt="Aaqill Mockup"
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                sizes="85vw"
               />
             ) : (
               <Image
@@ -469,6 +478,7 @@ AAQILL
                 quality={100}
                 src={aaqillMockupLand}
                 alt="Aaqill Mockup"
+                sizes="50vw"
               />
             )}
 
@@ -540,6 +550,7 @@ MYNOTT
                 quality={100}
                 src={mynottMockPort}
                 alt="Mynott Mockup"
+                sizes="85vw"
               />
             ) : (
               <Image
@@ -547,6 +558,7 @@ MYNOTT
                 quality={100}
                 src={mynottMockLand}
                 alt="Mynott Mockup"
+                sizes="50vw"
               />
             )}
 

@@ -7,6 +7,7 @@ import { useMediaQuery } from "react-responsive"; // A must for detecting respon
 import { TypeAnimation } from "react-type-animation";
 import styled from "styled-components";
 import Modal from "@/Components/Modal";
+import dynamic from "next/dynamic";
 
 // IMAGES
 
@@ -18,7 +19,7 @@ import PricingTableMobile from "@/Components/PricingTableMobile";
 
 // images
 import Spacer from "@/Components/Spacer";
-
+const Spline = dynamic(() => import("@splinetool/react-spline"));
 const PricingStyled = styled.div`
   h1 {
     @media ${GlobalVariables.device.laptop} {
@@ -1356,14 +1357,14 @@ MODALS */}
               </p>
             </div>
           </BasicTitleText>
-          {/* {splineLoadingBreakpointTriggered & !isPortrait ? (
+          {splineLoadingBreakpointTriggered & !isPortrait ? (
             <Spline
               className="rhombus-spline-container"
               scene="https://prod.spline.design/PaxOVLsx3FI1VvtA/scene.splinecode"
             />
           ) : (
             ""
-          )} */}
+          )}
         </div>
         <Spacer space="4rem" desktopspace="4rem"></Spacer>
         {/* CONTACT US SECTION */}

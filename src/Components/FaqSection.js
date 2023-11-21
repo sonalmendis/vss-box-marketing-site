@@ -85,7 +85,12 @@ const FaqSection = (props) => {
     <FaqSectionStyled className={props.className} center={props.center}>
       <div className="inner-container tablet-inner-grid">
         <div className="image-container tablet-inner-grid">
-          <Image src={globe} alt="Globe" />
+          <Image
+            src={globe}
+            alt="Globe"
+            sizes="(orientation:landscape) 35vw, 85vw"
+            quality={100}
+          />
         </div>
         <div className="text-container">
           <h2 className="s2">From England to Sri Lanka we’re here for you!</h2>

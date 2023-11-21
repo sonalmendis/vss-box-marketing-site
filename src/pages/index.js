@@ -28,8 +28,14 @@ import step1Illustration from "../../public/img/vectors/step-design.svg";
 import step2Illustration from "../../public/img/vectors/step-develop.svg";
 
 //for x section
-import companiesMockupPort from "../../public/img/bitmaps/companies-mockup-port.webp";
+import creativesBGMobile from "../../public/img/bitmaps/creatives-bg-mobile.webp";
+import creativesBGDesktop from "../../public/img/bitmaps/creatives-bg-desktop.webp";
+import creativesBGTablet from "../../public/img/bitmaps/creatives-bg-tablet.webp";
 import creativesMockupPort from "../../public/img/bitmaps/creatives-mockup-port.webp";
+import companiesBGMobile from "../../public/img/bitmaps/companies-bg-mobile.webp";
+import companiesBGDesktop from "../../public/img/bitmaps/companies-bg-desktop.webp";
+import companiesBGTablet from "../../public/img/bitmaps/companies-bg-tablet.webp";
+import companiesMockupPort from "../../public/img/bitmaps/companies-mockup-port.webp";
 
 //tools
 import adobeIcon from "../../public/img/tools-icons/adobe.svg";
@@ -56,6 +62,7 @@ import Spacer from "@/Components/Spacer";
 import ThreeColSection from "@/Components/ThreeColSection";
 import BasicTitleText from "../Components/BasicTitleText";
 import Modal from "@/Components/Modal";
+
 // import { getServerSideProps } from "next/dist/build/templates/pages";
 
 export default function Home(props) {
@@ -80,6 +87,10 @@ export default function Home(props) {
 
   const isTablet = useMediaQuery({
     query: `${GlobalVariables.device.tablet}`,
+  });
+
+  const isLaptop = useMediaQuery({
+    query: `${GlobalVariables.device.laptop}`,
   });
 
   // const gem1ref = useRef(null);
@@ -492,6 +503,7 @@ export default function Home(props) {
                 src={gem1}
                 alt="gem1"
                 ref={gem1parallax.ref}
+                sizes="(orientation:landscape) 7vw, 10vw"
               />
 
               <Image
@@ -499,12 +511,14 @@ export default function Home(props) {
                 src={gem1Outline}
                 alt="gem1 outline"
                 ref={gem1OutlineParallax.ref}
+                sizes="(orientation:landscape) 7vw, 10vw"
               />
               <Image
                 className={`${IntroSectionStyles.gem2}`}
                 src={gem2}
                 alt="gem2"
                 ref={gem2parallax.ref}
+                sizes="(orientation:landscape) 7vw, 10vw"
               />
 
               <Image
@@ -512,6 +526,7 @@ export default function Home(props) {
                 src={gem2Outline}
                 alt="gem2 outline"
                 ref={gem2OutlineParallax.ref}
+                sizes="(orientation:landscape) 7vw, 10vw"
               />
               <Image
                 className={`${IntroSectionStyles.gem3}`}
@@ -530,6 +545,7 @@ export default function Home(props) {
                 src={gem4}
                 alt="gem4"
                 ref={gem4parallax.ref}
+                sizes="(orientation:landscape) 10vw, 15vw"
               />
 
               <Image
@@ -537,6 +553,7 @@ export default function Home(props) {
                 src={gem4Outline}
                 alt="gem4 outline"
                 ref={gem4OutlineParallax.ref}
+                sizes="(orientation:landscape) 10vw, 15vw"
               />
             </div>
           </div>
@@ -595,60 +612,17 @@ export default function Home(props) {
             <div className=""></div>
 
             <>
-              <picture>
-                <source
-                  srcSet={`
-         
-                  https://ik.imagekit.io/kx65wqg4n/63880d4661c776c1905a042424f9624b.webp 2048w,
-                  https://ik.imagekit.io/kx65wqg4n/63880d4661c776c1905a042424f9624b.webp?tr=w-1870 1870w,
-                  https://ik.imagekit.io/kx65wqg4n/63880d4661c776c1905a042424f9624b.webp?tr=w-1660 1660w,
-                  https://ik.imagekit.io/kx65wqg4n/63880d4661c776c1905a042424f9624b.webp?tr=w-1430 1430w,
-                  https://ik.imagekit.io/kx65wqg4n/63880d4661c776c1905a042424f9624b.webp?tr=w-1150 1150w,
-                  https://ik.imagekit.io/kx65wqg4n/63880d4661c776c1905a042424f9624b.webp?tr=w-780 780w,
-        
-            
-                  `}
-                  media={`(orientation: portrait) and ${GlobalVariables.device.tablet}`}
-                  sizes="100vw"
-                />
-                <source
-                  srcSet={`
-         
-    
-                  https://ik.imagekit.io/kx65wqg4n/abd7d40d8bb988c63f073e65d92f80f4.webp?tr=w-1520 1520w,
-                  https://ik.imagekit.io/kx65wqg4n/abd7d40d8bb988c63f073e65d92f80f4.webp?tr=w-1320 1320w,
-                  https://ik.imagekit.io/kx65wqg4n/abd7d40d8bb988c63f073e65d92f80f4.webp?tr=w-1070 1070w,
-                  https://ik.imagekit.io/kx65wqg4n/abd7d40d8bb988c63f073e65d92f80f4.webp?tr=w-760 760w,
-                  https://ik.imagekit.io/kx65wqg4n/abd7d40d8bb988c63f073e65d92f80f4.webp?tr=w-300 300w,
-        
-            
-                  `}
-                  media="(orientation: portrait)"
-                  sizes="100vw"
-                />
-
-                <source
-                  srcSet={`
-         
-                  https://ik.imagekit.io/kx65wqg4n/34ecb2a672138099e9886f8724d26900.webp 2048w,
-                  https://ik.imagekit.io/kx65wqg4n/34ecb2a672138099e9886f8724d26900.webp?tr=w-1870 1870w,
-                  https://ik.imagekit.io/kx65wqg4n/34ecb2a672138099e9886f8724d26900.webp?tr=w-1680 1680w,
-                  https://ik.imagekit.io/kx65wqg4n/34ecb2a672138099e9886f8724d26900.webp?tr=w-1470 1470w,
-                  https://ik.imagekit.io/kx65wqg4n/34ecb2a672138099e9886f8724d26900.webp?tr=w-1210 1210w,
-                  https://ik.imagekit.io/kx65wqg4n/34ecb2a672138099e9886f8724d26900.webp?tr=w-880 880w,
-        
-            
-                  `}
-                  media="(orientation: landscape)"
-                  sizes="100vw"
-                />
-                <img
-                  className="container-bg mockup-section"
-                  src="https://ik.imagekit.io/kx65wqg4n/34ecb2a672138099e9886f8724d26900.webp"
-                  loading={"lazy"}
-                  alt="Dart"
-                />
-              </picture>
+              <Image
+                className="container-bg mockup-section"
+                src={
+                  (isPortrait & !isTablet && creativesBGMobile) ||
+                  (isPortrait & isTablet && creativesBGTablet) ||
+                  (isLaptop && creativesBGDesktop)
+                }
+                alt="Creatives BG"
+                quality={100}
+                sizes="100vw"
+              />
 
               <div className="inner-content-container tablet-inner-grid desktop-inner-grid">
                 <div className="text-container inner-grid mockup-section">
@@ -669,7 +643,7 @@ export default function Home(props) {
                     src={creativesMockupPort}
                     alt="Creatives Mockup"
                     quality={85}
-                    sizes="(orientation:landscape) 50vw, 95vw"
+                    sizes="(orientation:landscape) 35vw, 85vw"
                   />
                 </div>
               </div>
@@ -683,61 +657,17 @@ export default function Home(props) {
             <div className=""></div>
 
             <>
-              <picture>
-                <source
-                  srcSet={`
-           
-                    https://ik.imagekit.io/kx65wqg4n/31740360ea27c7c1598fcbf5c6a8df3f.webp 2048w,
-                    https://ik.imagekit.io/kx65wqg4n/31740360ea27c7c1598fcbf5c6a8df3f.webp?tr=w-1870 1870w,
-                    https://ik.imagekit.io/kx65wqg4n/31740360ea27c7c1598fcbf5c6a8df3f.webp?tr=w-1660 1660w,
-                    https://ik.imagekit.io/kx65wqg4n/31740360ea27c7c1598fcbf5c6a8df3f.webp?tr=w-1430 1430w,
-                    https://ik.imagekit.io/kx65wqg4n/31740360ea27c7c1598fcbf5c6a8df3f.webp?tr=w-1150 1150w,
-                    https://ik.imagekit.io/kx65wqg4n/31740360ea27c7c1598fcbf5c6a8df3f.webp?tr=w-780 780w,
-          
-              
-                    `}
-                  media={`(orientation: portrait) and ${GlobalVariables.device.tablet}`}
-                  sizes="100vw"
-                />
-                <source
-                  srcSet={`
-           
-      
-                    https://ik.imagekit.io/kx65wqg4n/b08a39efce3ce730f5979ea2e59e7437.webp?tr=w-1520 1520w,
-                    https://ik.imagekit.io/kx65wqg4n/b08a39efce3ce730f5979ea2e59e7437.webp?tr=w-1320 1320w,
-                    https://ik.imagekit.io/kx65wqg4n/b08a39efce3ce730f5979ea2e59e7437.webp?tr=w-1070 1070w,
-                    https://ik.imagekit.io/kx65wqg4n/b08a39efce3ce730f5979ea2e59e7437.webp?tr=w-760 760w,
-                    https://ik.imagekit.io/kx65wqg4n/b08a39efce3ce730f5979ea2e59e7437.webp?tr=w-300 300w,
-          
-              
-                    `}
-                  media="(orientation: portrait)"
-                  sizes="100vw"
-                />
-
-                <source
-                  srcSet={`
-           
-                    https://ik.imagekit.io/kx65wqg4n/e487b709dbda430f4925bfc634521ee4.webp 2048w,
-                    https://ik.imagekit.io/kx65wqg4n/e487b709dbda430f4925bfc634521ee4.webp?tr=w-1870 1870w,
-                    https://ik.imagekit.io/kx65wqg4n/e487b709dbda430f4925bfc634521ee4.webp?tr=w-1680 1680w,
-                    https://ik.imagekit.io/kx65wqg4n/e487b709dbda430f4925bfc634521ee4.webp?tr=w-1470 1470w,
-                    https://ik.imagekit.io/kx65wqg4n/e487b709dbda430f4925bfc634521ee4.webp?tr=w-1210 1210w,
-                    https://ik.imagekit.io/kx65wqg4n/e487b709dbda430f4925bfc634521ee4.webp?tr=w-880 880w,
-          
-              
-                    `}
-                  media="(orientation: landscape)"
-                  sizes="100vw"
-                />
-
-                <img
-                  className="container-bg mockup-section"
-                  src="https://ik.imagekit.io/kx65wqg4n/e487b709dbda430f4925bfc634521ee4.webp"
-                  alt="Dart"
-                  loading={"lazy"}
-                />
-              </picture>
+              <Image
+                className="container-bg mockup-section"
+                src={
+                  (isPortrait & !isTablet && companiesBGMobile) ||
+                  (isPortrait & isTablet && companiesBGTablet) ||
+                  (isLaptop && companiesBGDesktop)
+                }
+                alt="Creatives BG"
+                quality={100}
+                sizes="100vw"
+              />
 
               <div className="inner-content-container tablet-inner-grid desktop-inner-grid">
                 <div className="text-container inner-grid mockup-section">
@@ -758,7 +688,7 @@ export default function Home(props) {
                       src={companiesMockupPort}
                       alt="Companies Mockup"
                       quality={95}
-                      sizes="(orientation:landscape) 50vw, 95vw"
+                      sizes="(orientation:landscape) 35vw, 85vw"
                     />
                   </Parallax>
                 </div>
