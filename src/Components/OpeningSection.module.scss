@@ -20,7 +20,10 @@ $grey: #8f9294;
     }
   }
   backface-visibility: hidden;
-  animation: scaleIn 4s ease-in-out 1.5s forwards;
+
+  &.triggerScaleAnimation {
+    animation: scaleIn 2s ease-in-out 0s forwards;
+  }
 
   .backgroundContainer {
     height: 100%;

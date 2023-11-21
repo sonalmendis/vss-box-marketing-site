@@ -61,6 +61,7 @@ import Modal from "@/Components/Modal";
 export default function Home(props) {
   const [priceData, setPriceData] = useState(null);
   const [isCMSModalOpen, setIsCMSModalOpen] = useState(false);
+  const [hasIntroImageLoaded, sethasIntroImageLoaded] = useState(false);
 
   const handleOpen = () => {
     setIsCMSModalOpen(true);
@@ -175,7 +176,6 @@ export default function Home(props) {
       const introAnimationContainer = document.querySelector(
         `.${OpeningSectionStyles.OpeningSectionWrapper}`
       );
-      console.log(introAnimationContainer);
 
       const handleAnimationEnd = (event) => {
         if (event.animationName.includes("scaleIn")) {
@@ -253,6 +253,8 @@ export default function Home(props) {
         <OpeningSection
           className={`${OpeningSectionStyles.OpeningSectionWrapper} ${
             hasAnimationPlayedOnce && "freezeAtLastFrame"
+          } ${
+            hasIntroImageLoaded && OpeningSectionStyles.triggerScaleAnimation
           }`}
         >
           <div className={OpeningSectionStyles.backgroundContainer}>
@@ -264,6 +266,9 @@ export default function Home(props) {
                 sizes="100vw"
                 quality={100}
                 priority
+                onLoadingComplete={() => {
+                  sethasIntroImageLoaded(true);
+                }}
               />
             ) : (
               <Image
@@ -273,6 +278,9 @@ export default function Home(props) {
                 sizes="100vw"
                 quality={100}
                 priority
+                onLoadingComplete={() => {
+                  sethasIntroImageLoaded(true);
+                }}
               />
             )}
 
