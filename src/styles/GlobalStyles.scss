@@ -1145,3 +1145,12 @@ MISC
 
   animation: scaleonclick 0.5s ease forwards !important;
 }
+
+.preloader-animation {
+  height: auto;
+  width: 22vw;
+  @include gvars.laptop {
+    height: auto;
+    width: 9vw;
+  }
+}

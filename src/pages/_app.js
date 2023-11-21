@@ -7,6 +7,8 @@ import Footer from "@/Components/Footer";
 import localFont from "next/font/local";
 import { Gabarito, Poppins } from "next/font/google";
 import dynamic from "next/dynamic";
+import loader from "../../public/img/loader.svg";
+import Image from "next/image";
 const ParallaxProvider = dynamic(
   () => import("@/Components/ParallaxProvider"),
   { ssr: false }
@@ -146,7 +148,19 @@ export default function App({ Component, pageProps }) {
             }}
           ></div>
         )}
-
+        <div
+          id="preloaderDiv"
+          style={{
+            background: "#090516",
+            height: "100vh",
+            width: "100vw",
+            display: hasAnimationPlayedOnce ? "none" : "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image src={loader} alt="Loader" className="preloader-animation" />
+        </div>
         <Footer />
       </main>
     </>

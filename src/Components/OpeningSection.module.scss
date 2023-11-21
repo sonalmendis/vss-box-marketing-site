@@ -277,8 +277,8 @@ $grey: #8f9294;
             h1 {
               backface-visibility: hidden;
 
-              opacity: 0;
-              animation: textReveal 1s ease-in-out 1.5s forwards;
+              // opacity: 0;
+              // animation: textReveal 1s ease-in-out 1.5s forwards;
             }
             h3 {
               @keyframes textScale {
@@ -290,8 +290,8 @@ $grey: #8f9294;
                 }
               }
               opacity: 1;
-              transform: scale(2) translateY(5vh);
-              animation: textScale 1s ease-in-out 0.75s forwards;
+              // transform: scale(2) translateY(5vh);
+              // animation: textScale 1s ease-in-out 0.75s forwards;
             }
           }
         }
