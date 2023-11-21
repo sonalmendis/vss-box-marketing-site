@@ -42,6 +42,7 @@ const FormStyled = styled.div`
     margin-top: -8rem;
     position: relative;
     z-index: -1;
+    overflow: hidden;
     img {
       margin-left: 50%;
       transform: translateX(-50%);

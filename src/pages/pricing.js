@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import * as GlobalVariables from "@/styles/GlobalVariables";
-import Spline from "@splinetool/react-spline";
+// import Spline from "@splinetool/react-spline";
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
@@ -1356,14 +1356,14 @@ MODALS */}
               </p>
             </div>
           </BasicTitleText>
-          {splineLoadingBreakpointTriggered & !isPortrait ? (
+          {/* {splineLoadingBreakpointTriggered & !isPortrait ? (
             <Spline
               className="rhombus-spline-container"
               scene="https://prod.spline.design/PaxOVLsx3FI1VvtA/scene.splinecode"
             />
           ) : (
             ""
-          )}
+          )} */}
         </div>
         <Spacer space="4rem" desktopspace="4rem"></Spacer>
         {/* CONTACT US SECTION */}

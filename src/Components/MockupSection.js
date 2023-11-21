@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 import * as GlobalVariables from "@/styles/GlobalVariables";
 import { Carousel } from "react-responsive-carousel";
@@ -78,11 +78,35 @@ const MockupSectionStyled = styled.div`
 `;
 
 const MockupSection = (props) => {
+  const [mockupSectionViewpointReached, setMockupSectionViewpointReached] =
+    useState(false);
+  const containerRef = useRef(null); // useRef is used here as an alternative to querySelectorAll as it works better for single elements
+  const observer = useMemo(() => {
+    return new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setMockupSectionViewpointReached(true);
+          console.log("container is visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+  }, []);
   const isPortrait = useMediaQuery({
     query: `${GlobalVariables.device.portrait}`,
   });
+
+  useEffect(() => {
+    observer.observe(containerRef.current);
+
+    // Return a cleanup function to disconnect the observer
+    return () => {
+      observer.disconnect();
+    };
+  }, [observer, containerRef]);
+
   return (
-    <MockupSectionStyled className={props.className}>
+    <MockupSectionStyled ref={containerRef} className={props.className}>
       <Carousel
         interval={10000}
         autoPlay={false}
@@ -90,12 +114,13 @@ const MockupSection = (props) => {
         infiniteLoop={true}
         showStatus={false}
         showIndicators={true}
-        swipeable={false}
+        swipeable={true}
         showThumbs={false}
         centerMode={true}
         centerSlidePercentage={isPortrait ? 150 : 120}
         useKeyboardArrows={true}
-        swipeScrollTolerance={25}
+        swipeScrollTolerance={50}
+        preventMovementUntilSwipeScrollTolerance={true}
         showArrows={true}
       >
         <TwoColProduct
@@ -181,7 +206,11 @@ const MockupSection = (props) => {
                 </p>
               </div>
 
-              <Button type="outline" href="https://getinboxiq.com">
+              <Button
+                type="outline"
+                target="_blank"
+                href="https://getinboxiq.com"
+              >
                 Visit Site
               </Button>
             </div>
@@ -206,12 +235,14 @@ DWELLANT */}
                 quality={100}
                 src={dwellantMockupPort}
                 alt="InboxIQ Mockup"
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
               />
             ) : (
               <Image
                 quality={100}
                 src={dwellantMockupLand}
                 alt="Dwellant Mockup"
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
               />
             )}
 
@@ -255,7 +286,7 @@ DWELLANT */}
                 </p>
               </div>
 
-              <Button type="outline" href="https://getinboxiq.com">
+              <Button type="outline" href="https://www.dwellant.com">
                 Visit Site
               </Button>
             </div>
@@ -279,9 +310,19 @@ DWELLANT */}
           <h2 className="s3 title-container">Daya</h2>
           <div className="img-col">
             {isPortrait ? (
-              <Image quality={100} src={dayaMockupPortrait} alt="Daya Mockup" />
+              <Image
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                quality={100}
+                src={dayaMockupPortrait}
+                alt="Daya Mockup"
+              />
             ) : (
-              <Image quality={100} src={dayaMockupLand} alt="Daya Mockup" />
+              <Image
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                quality={100}
+                src={dayaMockupLand}
+                alt="Daya Mockup"
+              />
             )}
 
             {/* <Parallax speed={-8} className="circles-container"> */}
@@ -321,10 +362,6 @@ DWELLANT */}
                   to give a fresh modern look.
                 </p>
               </div>
-
-              <Button type="outline" href="https://getinboxiq.com">
-                Visit Site
-              </Button>
             </div>
             {/* </Parallax> */}
           </div>
@@ -345,9 +382,19 @@ ROAR
           <h2 className="s3 title-container">Roar</h2>
           <div className="img-col">
             {isPortrait ? (
-              <Image quality={100} src={roarMockupPortrait} alt="Roar Mockup" />
+              <Image
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                quality={100}
+                src={roarMockupPortrait}
+                alt="Roar Mockup"
+              />
             ) : (
-              <Image quality={100} src={roarMockLand} alt="Roar Mockup" />
+              <Image
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                quality={100}
+                src={roarMockLand}
+                alt="Roar Mockup"
+              />
             )}
 
             {/* <Parallax speed={-8} className="circles-container"> */}
@@ -390,14 +437,89 @@ ROAR
                   projects.
                 </p>
               </div>
+            </div>
+            {/* </Parallax> */}
+          </div>
+        </TwoColProduct>
 
-              <Button type="outline" href="https://getinboxiq.com">
+        {/* 
+AAQILL
+  AAQILL
+    AAQILL
+      AAQILL
+        */}
+
+        <TwoColProduct
+          side="right"
+          className="inner-grid tablet-inner-grid4 desktop-inner-grid "
+          circlebg="radial-gradient(   circle at 75% 15%,   #fffaa3 35%,   #e4a153 75%,   #8b4b11 100%   )"
+        >
+          <h2 className="s3 title-container">Aaqill Photography</h2>
+          <div className="img-col">
+            {isPortrait ? (
+              <Image
+                quality={100}
+                src={aaqillMokckupPortrait}
+                alt="Aaqill Mockup"
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+              />
+            ) : (
+              <Image
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                quality={100}
+                src={aaqillMockupLand}
+                alt="Aaqill Mockup"
+              />
+            )}
+
+            {/* <Parallax speed={-8} className="circles-container"> */}
+
+            <div className="sphere sphere2"></div>
+
+            {/* </Parallax> */}
+          </div>
+
+          <div className="text-col">
+            {/* <Parallax speed={20}> */}
+            <div className="text-col-inner-container ">
+              <div className="textbg-container">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="url(#b1)">
+                    <animate
+                      attributeName="d"
+                      dur="20s"
+                      repeatCount="indefinite"
+                      values="
+                    M77.5,59.5Q69,69,59.5,79.5Q50,90,38.5,81.5Q27,73,21,61.5Q15,50,21.5,39Q28,28,39,17.5Q50,7,67.5,11Q85,15,85.5,32.5Q86,50,77.5,59.5Z;
+                    M81,67.5Q85,85,67.5,83.5Q50,82,36.5,79.5Q23,77,13,63.5Q3,50,10.5,34Q18,18,34,21Q50,24,60.5,26.5Q71,29,74,39.5Q77,50,81,67.5Z;
+                    M80,65Q80,80,65,83.5Q50,87,34,84.5Q18,82,16.5,66Q15,50,20.5,38Q26,26,38,16Q50,6,62.5,15.5Q75,25,77.5,37.5Q80,50,80,65Z;
+                    M88.5,66Q82,82,66,86Q50,90,34,86Q18,82,18,66Q18,50,22,38Q26,26,38,21.5Q50,17,67,16.5Q84,16,89.5,33Q95,50,88.5,66Z;
+                    M79.5,62Q74,74,62,85Q50,96,36.5,86.5Q23,77,13.5,63.5Q4,50,16,39Q28,28,39,23Q50,18,63,21Q76,24,80.5,37Q85,50,79.5,62Z;
+                    M77.5,59.5Q69,69,59.5,79.5Q50,90,38.5,81.5Q27,73,21,61.5Q15,50,21.5,39Q28,28,39,17.5Q50,7,67.5,11Q85,15,85.5,32.5Q86,50,77.5,59.5Z;
+                    "
+                    ></animate>
+                  </path>
+                </svg>
+              </div>
+              <div className="text-container">
+                <h2 className="s3 underline title-container-desktop">
+                  Aaqill Photography
+                </h2>
+                <p>
+                  Aaqill reached us in 2023 to create a visually striking
+                  portfolio for his photography. We kept the design clean and
+                  minimal and included an intro animation.
+                </p>
+              </div>
+
+              <Button type="outline" href="https://aaqillphotography.com">
                 Visit Site
               </Button>
             </div>
             {/* </Parallax> */}
           </div>
         </TwoColProduct>
+
         {/* 
 MYNOTT
   MYNOTT
@@ -413,9 +535,19 @@ MYNOTT
           <h2 className="s3 title-container">Mynott Bowers</h2>
           <div className="img-col">
             {isPortrait ? (
-              <Image quality={100} src={mynottMockPort} alt="Mynott Mockup" />
+              <Image
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                quality={100}
+                src={mynottMockPort}
+                alt="Mynott Mockup"
+              />
             ) : (
-              <Image quality={100} src={mynottMockLand} alt="Mynott Mockup" />
+              <Image
+                loading={mockupSectionViewpointReached ? "eager" : "lazy"}
+                quality={100}
+                src={mynottMockLand}
+                alt="Mynott Mockup"
+              />
             )}
 
             {/* <Parallax speed={-8} className="circles-container"> */}
@@ -457,81 +589,6 @@ MYNOTT
                   website in 2019.
                 </p>
               </div>
-
-              <Button type="outline" href="https://getinboxiq.com">
-                Visit Site
-              </Button>
-            </div>
-            {/* </Parallax> */}
-          </div>
-        </TwoColProduct>
-        {/* 
-AAQILL
-  AAQILL
-    AAQILL
-      AAQILL
-        */}
-
-        <TwoColProduct
-          side="right"
-          className="inner-grid tablet-inner-grid4 desktop-inner-grid "
-          circlebg="radial-gradient(   circle at 75% 15%,   #fffaa3 35%,   #e4a153 75%,   #8b4b11 100%   )"
-        >
-          <h2 className="s3 title-container">Aaqill Photography</h2>
-          <div className="img-col">
-            {isPortrait ? (
-              <Image
-                quality={100}
-                src={aaqillMokckupPortrait}
-                alt="Aaqill Mockup"
-              />
-            ) : (
-              <Image quality={100} src={aaqillMockupLand} alt="Aaqill Mockup" />
-            )}
-
-            {/* <Parallax speed={-8} className="circles-container"> */}
-
-            <div className="sphere sphere2"></div>
-
-            {/* </Parallax> */}
-          </div>
-
-          <div className="text-col">
-            {/* <Parallax speed={20}> */}
-            <div className="text-col-inner-container ">
-              <div className="textbg-container">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="url(#b1)">
-                    <animate
-                      attributeName="d"
-                      dur="20s"
-                      repeatCount="indefinite"
-                      values="
-                    M77.5,59.5Q69,69,59.5,79.5Q50,90,38.5,81.5Q27,73,21,61.5Q15,50,21.5,39Q28,28,39,17.5Q50,7,67.5,11Q85,15,85.5,32.5Q86,50,77.5,59.5Z;
-                    M81,67.5Q85,85,67.5,83.5Q50,82,36.5,79.5Q23,77,13,63.5Q3,50,10.5,34Q18,18,34,21Q50,24,60.5,26.5Q71,29,74,39.5Q77,50,81,67.5Z;
-                    M80,65Q80,80,65,83.5Q50,87,34,84.5Q18,82,16.5,66Q15,50,20.5,38Q26,26,38,16Q50,6,62.5,15.5Q75,25,77.5,37.5Q80,50,80,65Z;
-                    M88.5,66Q82,82,66,86Q50,90,34,86Q18,82,18,66Q18,50,22,38Q26,26,38,21.5Q50,17,67,16.5Q84,16,89.5,33Q95,50,88.5,66Z;
-                    M79.5,62Q74,74,62,85Q50,96,36.5,86.5Q23,77,13.5,63.5Q4,50,16,39Q28,28,39,23Q50,18,63,21Q76,24,80.5,37Q85,50,79.5,62Z;
-                    M77.5,59.5Q69,69,59.5,79.5Q50,90,38.5,81.5Q27,73,21,61.5Q15,50,21.5,39Q28,28,39,17.5Q50,7,67.5,11Q85,15,85.5,32.5Q86,50,77.5,59.5Z;
-                    "
-                    ></animate>
-                  </path>
-                </svg>
-              </div>
-              <div className="text-container">
-                <h2 className="s3 underline title-container-desktop">
-                  Aaqill Photography
-                </h2>
-                <p>
-                  Mynott Bowers is a quantity surveying firm based in the UK,
-                  Australia and Sri Lanka. We were tasked with re-creating their
-                  website in 2019.
-                </p>
-              </div>
-
-              <Button type="outline" href="https://getinboxiq.com">
-                Visit Site
-              </Button>
             </div>
             {/* </Parallax> */}
           </div>

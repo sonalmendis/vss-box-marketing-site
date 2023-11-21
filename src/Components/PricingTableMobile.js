@@ -32,6 +32,7 @@ const CarouselStyled = styled.div`
       padding: 0;
     }
     .outer-wrapper {
+      text-align: left;
       .inner-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -42,8 +43,8 @@ const CarouselStyled = styled.div`
     }
     .row {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      /* justify-content: center;
+      align-items: center; */
       position: relative;
       height: 100%;
       padding: 1.1em 0.5em;
@@ -303,6 +304,19 @@ const Carousel2 = (props) => {
                   <strong>-</strong>
                 </p>
                 <p className="offer">CMS</p>
+                <p
+                  style={{
+                    cursor: "pointer",
+                    fontstyle: "italic",
+                    textDecoration: "underline",
+                    marginTop: "0rem",
+                    marginBottom: "-0.5rem",
+                    color: "#b8d0ff",
+                  }}
+                  onClick={handleOpen}
+                >
+                  What is a CMS?
+                </p>
               </div>
 
               <div className="divider-row row">
@@ -367,7 +381,7 @@ const Carousel2 = (props) => {
                     cursor: "pointer",
                     fontstyle: "italic",
                     textDecoration: "underline",
-                    marginTop: "0.5rem",
+                    marginTop: "0rem",
                     marginBottom: "-0.5rem",
                     color: "#b8d0ff",
                   }}
@@ -415,6 +429,19 @@ const Carousel2 = (props) => {
               <div className="row">
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
                 <p className="offer">CMS</p>
+                <p
+                  style={{
+                    cursor: "pointer",
+                    fontstyle: "italic",
+                    textDecoration: "underline",
+                    marginTop: "0rem",
+                    marginBottom: "-0.5rem",
+                    color: "#b8d0ff",
+                  }}
+                  onClick={handleOpen}
+                >
+                  What is a CMS?
+                </p>
               </div>
 
               <div className="divider-row row">
@@ -513,6 +540,19 @@ const Carousel2 = (props) => {
               <div className="row">
                 <Image src={blueBullet} className="bullet" alt="green bullet" />
                 <p className="offer">CMS</p>
+                <p
+                  style={{
+                    cursor: "pointer",
+                    fontstyle: "italic",
+                    textDecoration: "underline",
+                    marginTop: "0rem",
+                    marginBottom: "-0.5rem",
+                    color: "#b8d0ff",
+                  }}
+                  onClick={handleOpen}
+                >
+                  What is a CMS?
+                </p>
               </div>
 
               <div className="divider-row row">

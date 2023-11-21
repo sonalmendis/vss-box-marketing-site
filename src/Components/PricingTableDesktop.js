@@ -134,14 +134,19 @@ const PricingTableDesktopStyled = styled.div`
             background: ${GlobalVariables.colours.main};
           }
           .col {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr repeat(2, 2fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
             border: none;
             text-align: left;
             padding: 2rem;
             border-radius: 1rem;
             margin-right: 1rem;
+            h2 {
+              align-self: end;
+            }
           }
         }
         .pro-container {
@@ -255,23 +260,25 @@ const PricingTableDesktop = (props) => {
               <h2 className="price-title">
                 {priceData && priceData[1].attributes.price_class}
               </h2>
-              <p>{priceData && priceData[1].attributes.price_desc}</p>
+              <div>
+                <p
+                  style={{
+                    cursor: "pointer",
+                    fontstyle: "italic",
+                    textDecoration: "underline",
+                    marginTop: "0rem",
+                    marginBottom: ".5rem",
+                    color: "#b8d0ff",
+                  }}
+                  onClick={handleOpen}
+                >
+                  What is a CMS?
+                </p>
+                <p>{priceData && priceData[1].attributes.price_desc}</p>
+              </div>
               <h2 className="s3">
                 {priceData && priceData[1].attributes.price}
               </h2>
-              <p
-                style={{
-                  cursor: "pointer",
-                  fontstyle: "italic",
-                  textDecoration: "underline",
-                  marginTop: "0.5rem",
-                  marginBottom: "-0.5rem",
-                  color: "#b8d0ff",
-                }}
-                onClick={handleOpen}
-              >
-                What is a CMS?
-              </p>
             </div>
             <div
               className={`col bespoke-plan-container hiddenNoIntersection delay ${

@@ -8,6 +8,15 @@ import Logo from "../../public/img/logo-landscape.svg";
 import Button from "./Button";
 import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+
+const MediaQuery = dynamic(
+  () => {
+    return import("react-responsive");
+  },
+  { ssr: false }
+);
+
 //images
 import telephoneIcon from "../../public/img/vectors/phone-icon.svg";
 import mailIcon from "../../public/img/vectors/mail-icon.svg";
@@ -15,15 +24,15 @@ import mailIcon from "../../public/img/vectors/mail-icon.svg";
 // The mobile menu container is both offset by a negative margin AND has 0 opacity, that way it is not visible and does not take up space on the page
 
 const Header = () => {
+  const isDesktop = useMediaQuery({
+    query: `(min-width: ${GlobalVariables.device.laptop})`,
+  });
   // Define state variable to keep track of whether the menu is open or closed
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Define state variable to keep track of the background opacity
   const [backgroundOpacity, setBackgroundOpacity] = useState(0);
 
-  const isDesktop = useMediaQuery({
-    query: `${GlobalVariables.device.laptop}`,
-  });
   const router = useRouter();
   // Define a function to toggle the menu state when the button is clicked
   const handleMenuButtonClick = (el) => {
@@ -148,7 +157,20 @@ IDFK WHY BUT IT DOES SO I'M LEAVING IT AS IS
 
           <div className={`${styles["right-column"]}`}>
             <Link href="/pricing">Pricing</Link>
-            <Link href="/#contact-form">Contact</Link>
+
+            <MediaQuery minWidth={1030}>
+              <Button
+                type="1"
+                target="_blank"
+                refferer="no-referrer"
+                className={`${styles["meetingBtn"]}`}
+                href="https://cal.com/sonal-mendis-awdbhl/30min"
+                nospace="true"
+                size="small"
+              >
+                Book a meeting
+              </Button>
+            </MediaQuery>
 
             {/* Render the menu button*/}
 
@@ -179,19 +201,8 @@ IDFK WHY BUT IT DOES SO I'M LEAVING IT AS IS
               Pricing
             </Button>
           </div>
-          <div className={`${styles["individual-link-container"]}`}>
-            <Button
-              href="/#contact-form"
-              inline="true"
-              onClick={handleMenuButtonClick}
-            >
-              Contact
-            </Button>
-          </div>
 
-          <div
-            className={`${styles["contact-details-container"]} vertical-padding1 no-bottom`}
-          >
+          <div className={`${styles["contact-details-container"]}`}>
             <div className={`${styles["inner-container"]}`}>
               <div className={`${styles["col"]}`}>
                 <Button

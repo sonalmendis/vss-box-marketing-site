@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import * as GlobalVariables from "@/styles/GlobalVariables";
+import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
+
 // import { useEffect, useState } from "react";
 // import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
 // import Image from "next/image";
@@ -14,7 +16,7 @@ const ButtonStyled = styled.div`
 
     font-size: 0.82rem;
     font-family: var(--font1), sans-serif;
-    margin-top: 1em;
+    margin-top: ${(props) => (props.nospace ? "0" : "1rem")};
     outline: none;
     border: 1px solid white;
 
@@ -52,20 +54,29 @@ const ButtonStyled = styled.div`
   }
 
   a {
-    padding: 1.4rem 2rem;
+    padding: ${(props) =>
+      props.size == "small" ? "0.9rem 1rem" : "1.4rem 2rem"};
     display: block;
     width: 100%;
     cursor: pointer;
     height: 100%;
+    text-align: center;
   }
 `;
 
 const Button = (props) => {
+  const isDesktop = useMediaQuery({
+    query: `${GlobalVariables.device.laptop}`,
+  });
   return (
     <ButtonStyled
       className={props.className}
       center={props.center}
       type={props.type}
+      nospace={props.nospace}
+      size={props.size}
+      style={props.style}
+      label={props.label}
     >
       <div className="button-inner-container">
         {props.href ? (

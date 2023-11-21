@@ -57,6 +57,8 @@ const LogobarStyled = styled.div`
     .inner-container {
       display: flex;
       justify-content: space-between;
+      flex-direction: ${(props) =>
+        props.landscape === "tablet" ? "row" : "column"};
     }
     .logo-container {
       img {
@@ -67,6 +69,8 @@ const LogobarStyled = styled.div`
 
   @media (${GlobalVariables.device.laptop}) {
     .inner-container {
+      flex-direction: ${(props) =>
+        props.landscape === "laptop" ? "row" : "inherit"};
     }
     .logo-container {
       img {
@@ -78,7 +82,11 @@ const LogobarStyled = styled.div`
 
 const Logobar = (props) => {
   return (
-    <LogobarStyled className={props.className} center={props.center}>
+    <LogobarStyled
+      landscape={props.landscape}
+      className={props.className}
+      center={props.center}
+    >
       {
         props.children /* this injects the content from wherever its used as a HOC, that way you can call the Logobar component and put your own text */
       }

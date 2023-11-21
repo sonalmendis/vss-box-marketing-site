@@ -16,10 +16,10 @@
       text-align: center;
     }
     h1 {
-      font-size: 5rem;
+      font-size: 20vw;
       word-break: break-word;
       @include gvars.mobileL {
-        font-size: 7rem;
+        font-size: 6rem;
       }
     }
     .textBG {
@@ -31,25 +31,33 @@
 
       .gemone {
         position: absolute;
-        right: 0;
-        width: 7rem;
-        top: 4.5rem;
+        right: -2vw;
+        width: 28vw;
+        top: -4vh;
         height: auto;
         z-index: 1;
+        @include gvars.tablet {
+          width: 6rem;
+        }
         @include gvars.laptop {
-          right: -5rem;
+          right: 12rem;
+          width: 6rem;
         }
       }
 
       .gem1Outline {
         position: absolute;
-        right: -1rem;
+        right: -4vw;
         width: 7rem;
-        top: 4rem;
+        top: -5vh;
         height: auto;
         z-index: 0;
+        @include gvars.tablet {
+          width: 6rem;
+        }
         @include gvars.laptop {
-          right: -6rem;
+          right: 11rem;
+          width: 6rem;
         }
       }
       .gem2 {
@@ -103,16 +111,20 @@
       }
 
       .gem4 {
-        width: 9rem;
+        width: 30vw;
         height: auto;
         position: absolute;
         z-index: 1;
         top: 0;
 
-        top: 32rem;
-        left: 2rem;
+        top: 80vh;
+        left: 9vw;
+        @include gvars.tablet {
+          width: 15vw;
+        }
         @include gvars.laptop {
-          top: 16rem;
+          top: 22rem;
+          width: 9vw;
           left: 38rem;
         }
       }
@@ -124,14 +136,18 @@
         top: 14.8rem;
       }
       .gem4Outline {
-        width: 9rem;
+        width: 30vw;
         height: auto;
         position: absolute;
         z-index: 0;
-        top: 32.5rem;
-        left: 1.4rem;
+        top: 82.5vh;
+        left: 7.5vw;
+        @include gvars.tablet {
+          width: 15vw;
+        }
         @include gvars.laptop {
-          top: 16.5rem;
+          width: 9vw;
+          top: 23rem;
           left: 37.4rem;
         }
       }

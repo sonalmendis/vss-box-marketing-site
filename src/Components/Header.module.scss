@@ -25,8 +25,8 @@
     padding-top: 0.65em;
     padding-bottom: 0.65em;
     @include gvars.laptop {
-      padding-top: 0em;
-      padding-bottom: 0em;
+      padding-top: 0.5rem;
+      padding-top: 0.5rem;
       backdrop-filter: blur(0);
     }
     &.open {
@@ -62,6 +62,9 @@
 
   // Hide the links on mobile and then show them on larger screens while hiding the button
   .right-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     a {
       display: none;
     }

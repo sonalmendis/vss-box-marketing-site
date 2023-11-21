@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Parallax, useParallax } from "react-scroll-parallax";
-// import Spline from "@splinetool/react-spline";
+
 // IMAGES
 import backgroundPort from "../../public/img/background-portrait.webp";
 import background from "../../public/img/background3.webp";
@@ -55,10 +55,17 @@ import ScrollDownArrow from "@/Components/ScrollDownArrow2";
 import Spacer from "@/Components/Spacer";
 import ThreeColSection from "@/Components/ThreeColSection";
 import BasicTitleText from "../Components/BasicTitleText";
+import Modal from "@/Components/Modal";
 // import { getServerSideProps } from "next/dist/build/templates/pages";
 
 export default function Home(props) {
   const [priceData, setPriceData] = useState(null);
+  const [isCMSModalOpen, setIsCMSModalOpen] = useState(false);
+
+  const handleOpen = () => {
+    setIsCMSModalOpen(true);
+  };
+  const handleClose = () => setIsCMSModalOpen(false);
 
   const disableOpeningAnimation =
     process.env.NEXT_PUBLIC_INTRO_ANIMATION_ENABLED === "true" ? false : true; // For development purposes
@@ -124,8 +131,8 @@ export default function Home(props) {
     endScroll: 1500,
   });
   const gem4parallax = useParallax({
-    speed: 45,
-    startScroll: 0,
+    speed: 35,
+    startScroll: -300,
     endScroll: 1500,
   });
   // const gem4bparallax = useParallax({
@@ -149,7 +156,7 @@ export default function Home(props) {
   });
   const gem4OutlineParallax = useParallax({
     speed: 42,
-    startScroll: 0,
+    startScroll: -300,
     endScroll: 1500,
   });
 
@@ -526,6 +533,7 @@ export default function Home(props) {
             </div>
           </div>
         </IntroSection>
+
         <BasicTitleText className="inner-grid desktop-inner-grid4">
           <div className="title-container">
             <p className="large">
@@ -842,7 +850,10 @@ export default function Home(props) {
           </div>
         </BasicTitleText>
 
-        <Logobar className="outer-grid tablet-inner-grid2 desktop-inner-grid4">
+        <Logobar
+          landscape="tablet"
+          className="outer-grid tablet-inner-grid2 desktop-inner-grid4"
+        >
           <div className="inner-container">
             <div className="logo-container">
               <Image src={adobeIcon} alt="Adobe icon" />
@@ -875,7 +886,10 @@ export default function Home(props) {
           </div>
         </BasicTitleText>
 
-        <Logobar className="outer-grid tablet-inner-grid2 desktop-inner-grid3">
+        <Logobar
+          landscape="laptop"
+          className="outer-grid tablet-inner-grid2 desktop-inner-grid3"
+        >
           <div className="inner-container">
             <div className="logo-container">
               <div className="price-container basic">
@@ -893,6 +907,19 @@ export default function Home(props) {
                 <h2 className="price-title">
                   {priceData && priceData[1].attributes.price_class}
                 </h2>
+                <p
+                  style={{
+                    cursor: "pointer",
+                    fontstyle: "italic",
+                    textDecoration: "underline",
+                    marginTop: "0.5rem",
+                    marginBottom: ".5rem",
+                    color: "#b8d0ff",
+                  }}
+                  onClick={handleOpen}
+                >
+                  What is a CMS?
+                </p>
                 <p> {priceData && priceData[1].attributes.price_desc}</p>
                 <h2 className="s3">
                   {priceData && priceData[1].attributes.price}
@@ -938,6 +965,21 @@ export default function Home(props) {
           noform="true"
           className="inner-grid tablet-inner-grid desktop-inner-grid4 vertical-padding5 no-bottom"
         />
+
+        {/* MODALS
+MODALS
+MODALS
+MODALS */}
+        <Modal isOpen={isCMSModalOpen} onClose={handleClose}>
+          <h2 className="s1">What is a CMS?</h2>
+          <p>
+            A CMS, (short for <strong>Content Management System</strong>), is a
+            tool that helps you easily create, edit, and manage content on your
+            website without needing any assistance from us; for instance, it
+            enables you to update articles, images, or product information on
+            your website without having to know how to code.
+          </p>
+        </Modal>
       </div>
     </>
   );

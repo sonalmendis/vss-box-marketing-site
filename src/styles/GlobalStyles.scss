@@ -279,6 +279,7 @@ body {
 }
 html {
   font-size: 100%;
+  font-size: 4vw;
   width: 100%;
   // scroll-behavior: smooth;
   @include gvars.tablet {
@@ -849,7 +850,7 @@ h1 {
   font-family: var(--font3), sans-serif;
   margin-bottom: 0.4rem;
   font-weight: 700;
-  font-size: 2.2rem;
+  font-size: 3.9vh;
   font-style: normal;
   text-transform: uppercase;
 
@@ -918,7 +919,7 @@ h2 {
 h3 {
   font-weight: 600;
   letter-spacing: 0.1rem;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   text-align: center;
   // margin-top: 1em;
   margin-bottom: 0.5rem;
