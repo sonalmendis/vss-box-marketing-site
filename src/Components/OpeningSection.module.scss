@@ -289,10 +289,9 @@ $grey: #8f9294;
                   transform: scale(1) translateY(0);
                 }
               }
-              opacity: 0;
+              opacity: 1;
               transform: scale(2) translateY(5vh);
-              animation: textReveal 0.5s ease-in-out 0s forwards,
-                textScale 1s ease-in-out 0.75s forwards;
+              animation: textScale 1s ease-in-out 0.75s forwards;
             }
           }
         }
