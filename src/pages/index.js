@@ -177,9 +177,8 @@ export default function Home(props) {
     // Once animation is done, the hasAnimationPlayedOnce becomes true and the animation is frozen at the last frame if the user navigates between pages
     // Also makes the page scrollable once complete
 
-    // HTML tag is fixed here that way the effets on the tag are only limited to the animation's scope
+    // HTML tag position is "fixed" here that way the effets on the tag are only limited to the animation's scope
     // (otherwise the HTML tag will be perma-fixed on other pages if you use CSS)
-
     if (!hasAnimationPlayedOnce) {
       const htmlTag = document.querySelector("html");
       htmlTag.style.overflowY = "scroll";
@@ -188,9 +187,11 @@ export default function Home(props) {
         `.${OpeningSectionStyles.OpeningSectionWrapper}`
       );
 
+      // Handle the animation end event (i.e make HTML scrollable and prevent the animation replaying on page navigation)
       const handleAnimationEnd = (event) => {
-        if (event.animationName.includes("scaleIn")) {
-          // console.log("Scale in animation ended");
+        console.log(event.animationName);
+        // If the last animation has finished (in this case the cube fade in) then set sethasAnimationPlayedOnce and remove the event listener
+        if (event.animationName.includes("cubeIntro")) {
           htmlTag.style.overflowY = "auto";
           htmlTag.style.position = "static";
           sethasAnimationPlayedOnce(true);
@@ -201,6 +202,7 @@ export default function Home(props) {
         }
       };
 
+      // Add the event listener to the intro animation container
       introAnimationContainer.addEventListener(
         "animationend",
         handleAnimationEnd
@@ -369,7 +371,7 @@ export default function Home(props) {
                           hasAnimationPlayedOnce && "freezeAtLastFrame"
                         }`}
                       >
-                        Beautiful<br></br>Websites & <br></br>Graphics
+                        Beautiful<br></br>Websites
                       </h1>
                     </div>
                   </div>

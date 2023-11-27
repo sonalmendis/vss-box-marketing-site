@@ -22,7 +22,7 @@ $grey: #8f9294;
   backface-visibility: hidden;
 
   &.triggerScaleAnimation {
-    animation: scaleIn 2s ease-in-out 0s forwards;
+    animation: scaleIn 3s ease-in-out 0.5s forwards;
   }
 
   .backgroundContainer {
@@ -95,7 +95,7 @@ $grey: #8f9294;
           transform: scale(1);
         }
       }
-      animation: cubeIntro 1s ease-in-out 5.5s forwards;
+      animation: cubeIntro 1s ease-in-out 4.5s forwards;
       .cube {
         position: relative;
         width: 3vw;
@@ -143,7 +143,7 @@ $grey: #8f9294;
             }
           }
           animation: faceBGchange 8s linear 8s infinite,
-            borderAppear 2s linear 5.5s forwards;
+            borderAppear 2s linear 4.5s forwards;
           &.front {
             transform: translateZ(4.5vw);
           }
