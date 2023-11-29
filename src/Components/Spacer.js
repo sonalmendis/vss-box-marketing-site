@@ -4,7 +4,7 @@ import * as GlobalVariables from "@/styles/GlobalVariables";
 const Spacer = styled.div`
   margin-bottom: ${(props) => props.space};
 
-  @media (${GlobalVariables.device.laptop}) {
+  @media ${GlobalVariables.device.laptop} {
     margin-bottom: ${(props) => props.desktopspace};
   }
 

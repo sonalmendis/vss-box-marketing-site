@@ -53,7 +53,7 @@ const LogobarStyled = styled.div`
     }
   }
 
-  @media (${GlobalVariables.device.tablet}) {
+  @media ${GlobalVariables.device.tablet} {
     .inner-container {
       display: flex;
       justify-content: space-between;
@@ -67,7 +67,7 @@ const LogobarStyled = styled.div`
     }
   }
 
-  @media (${GlobalVariables.device.laptop}) {
+  @media ${GlobalVariables.device.laptop} {
     .inner-container {
       flex-direction: ${(props) =>
         props.landscape === "laptop" ? "row" : "inherit"};

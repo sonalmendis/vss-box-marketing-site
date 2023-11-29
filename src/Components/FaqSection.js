@@ -18,7 +18,7 @@ import expandbutton from "../../public/img/vectors/expand-button.svg";
 // import "react-accessible-accordion/dist/fancy-example.css";
 const FaqSectionStyled = styled.div`
   .inner-container {
-    @media (${GlobalVariables.device.laptop}) {
+    @media ${GlobalVariables.device.laptop} {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: 1fr;
@@ -32,14 +32,17 @@ const FaqSectionStyled = styled.div`
       height: auto;
     }
     margin-bottom: 2rem;
-    @media (${GlobalVariables.device.laptop}) {
+    @media ${GlobalVariables.device.laptop} {
       width: auto;
       order: 2;
+      img {
+        margin-top: 7rem;
+      }
     }
   }
 
   .text-container {
-    @media (${GlobalVariables.device.laptop}) {
+    @media ${GlobalVariables.device.laptop} {
       padding-top: 6rem;
     }
   }
@@ -114,7 +117,7 @@ const FaqSection = (props) => {
                 <AccordionItemPanel>
                   <p>
                     VSS-BOX is duo of expert-level web developers with over 10
-                    years of experience in the field.We are based in the UK and
+                    years of experience in the field. We are based in the UK and
                     Sri Lanka and have worked with clients from all over the
                     world including with major companies like Sun Microsystems,
                     Credit Suisse, and BT.
@@ -143,6 +146,25 @@ const FaqSection = (props) => {
                 </AccordionItemPanel>
               </AccordionItem>
 
+              <AccordionItem>
+                <AccordionItemHeading>
+                  <AccordionItemButton>
+                    <p className="large">Do you make e-commerce sites?</p>
+                    <Image
+                      className="expand-button"
+                      src={expandbutton}
+                      alt="Expand button"
+                    />
+                  </AccordionItemButton>
+                </AccordionItemHeading>
+                <AccordionItemPanel>
+                  <p>
+                    Currently <strong>we do not</strong> offer e-commerce sites,
+                    our focus is on creating beautiful and highly functional
+                    landing pages for companies and individuals.
+                  </p>
+                </AccordionItemPanel>
+              </AccordionItem>
               <AccordionItem>
                 <AccordionItemHeading>
                   <AccordionItemButton>

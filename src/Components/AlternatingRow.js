@@ -10,6 +10,7 @@ const AlternatingRowStyled = styled.div`
 
   .text-container {
     order: 2;
+
     @media ${GlobalVariables.device.tablet} {
       text-align: center;
     }
@@ -19,7 +20,7 @@ const AlternatingRowStyled = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 100%;
+      width: 75%;
     }
     button {
       margin-left: auto;
@@ -68,7 +69,7 @@ const AlternatingRowStyled = styled.div`
   }
 
   .text-container.mockup-section .inner-container {
-    text-align: left;
+    text-align: center;
 
     position: relative;
     /* background: rgba(255, 255, 255, 0.05); */

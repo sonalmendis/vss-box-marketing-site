@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-
+  z-index: 5;
   align-items: center;
 
   .textContainer {
@@ -32,10 +32,10 @@
       .gemone {
         position: absolute;
         right: -2vw;
-        width: 28vw;
+        width: 22vw;
         top: -4vh;
         height: auto;
-        z-index: 1;
+        z-index: 99;
         @include gvars.tablet {
           width: 6rem;
         }
@@ -48,7 +48,7 @@
       .gem1Outline {
         position: absolute;
         right: -4vw;
-        width: 7rem;
+        width: 22vw;
         top: -5vh;
         height: auto;
         z-index: 0;
@@ -111,16 +111,17 @@
       }
 
       .gem4 {
-        width: 30vw;
+        width: 25vw;
         height: auto;
         position: absolute;
         z-index: 1;
         top: 0;
 
-        top: 80vh;
+        top: 90vh;
         left: 9vw;
         @include gvars.tablet {
           width: 15vw;
+          top: 75vh;
         }
         @include gvars.laptop {
           top: 22rem;
@@ -136,14 +137,15 @@
         top: 14.8rem;
       }
       .gem4Outline {
-        width: 30vw;
+        width: 25vw;
         height: auto;
         position: absolute;
         z-index: 0;
-        top: 82.5vh;
+        top: 94.5vh;
         left: 7.5vw;
         @include gvars.tablet {
           width: 15vw;
+          top: 79.5vh;
         }
         @include gvars.laptop {
           width: 9vw;
@@ -155,19 +157,24 @@
     .animatedTextContainer {
       position: relative;
       .AnimatedText {
-        background: url("../../public/img/bitmaps/textbg2.webp") no-repeat;
+        background-image: url("../../public/img/bitmaps/textbg2.jpg");
+        background-repeat: no-repeat;
         background-position: center;
         -webkit-background-clip: text;
-        color: transparent;
-        background-attachment: fixed;
-        background-size: cover;
+        background-clip: text;
+        -webkit-box-decoration-break: clone;
+        // color: transparent;
+        color: white;
+        -webkit-text-fill-color: transparent;
+        // background-attachment: fixed;
+        // background-size: cover;
       }
       .AnimatedText2 {
-        background: url("../../public/img/bitmaps/textbg2.webp") no-repeat;
+        background: url("../../public/img/bitmaps/textbg2.jpg") no-repeat;
         background-position: center;
         -webkit-background-clip: text;
         color: transparent;
-        background-attachment: fixed;
+        // background-attachment: fixed;
         filter: blur(0.03em);
         z-index: -1;
         position: absolute;

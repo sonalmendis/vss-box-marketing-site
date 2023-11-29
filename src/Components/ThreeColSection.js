@@ -15,7 +15,7 @@ const ThreeColSectionStyled = styled.div`
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
-    width: 62vw;
+    width: 50%;
     @media ${GlobalVariables.device.tablet} {
       width: 75%;
       height: auto;

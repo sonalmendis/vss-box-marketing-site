@@ -8,8 +8,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Parallax, useParallax } from "react-scroll-parallax";
 
 // IMAGES
-import backgroundPort from "../../public/img/background-portrait.webp";
-import background from "../../public/img/background3.webp";
+import backgroundPort from "../../public/img/background-portrait.png";
+import background from "../../public/img/background4.png";
 import LogoMiddle from "../../public/img/dark-middle-logo.svg";
 import leftCircle from "../../public/img/vectors/leftCircle.svg";
 // intro section images
@@ -26,6 +26,8 @@ import gem4Outline from "../../public/img/vectors/gem4-outline.svg";
 import step3Illustration from "../../public/img/vectors/step-deploy.png";
 import step1Illustration from "../../public/img/vectors/step-design.svg";
 import step2Illustration from "../../public/img/vectors/step-develop.svg";
+import wiseIcon from "../../public/img/vectors/wise-icon.svg";
+import slackIcon from "../../public/img/vectors/slack-icon.svg";
 
 //for x section
 import creativesBGMobile from "../../public/img/bitmaps/creatives-bg-mobile.webp";
@@ -130,7 +132,7 @@ export default function Home(props) {
   const gem1parallax = useParallax({
     speed: 22,
     startScroll: 0,
-    endScroll: 1500,
+    endScroll: 1700,
   });
   const gem2parallax = useParallax({
     speed: 18,
@@ -154,7 +156,7 @@ export default function Home(props) {
   const gem1OutlineParallax = useParallax({
     speed: 18,
     startScroll: 0,
-    endScroll: 1500,
+    endScroll: 1700,
   });
   const gem2OutlineParallax = useParallax({
     speed: 20,
@@ -631,11 +633,11 @@ export default function Home(props) {
                   <div className="inner-container">
                     <h1 className="">For Creatives</h1>
 
-                    <p className="">
+                    <p className="faded">
                       Show off your work in style! Whether you’re a
                       photographer, graphic designer, musician or even a
                       programmer you’ll definitely stand out amongst the crowd
-                      with a professional site.
+                      with a professional portfolio.
                     </p>
                   </div>
                 </div>
@@ -676,7 +678,7 @@ export default function Home(props) {
                   <div className="inner-container">
                     <h1>For Companies</h1>
 
-                    <p>
+                    <p className="faded">
                       Every company needs a landing page! Not just to impress
                       customers but potential investors also. A company page is
                       a like a home for the company’s vision.
@@ -715,7 +717,7 @@ export default function Home(props) {
         <ThreeColSection
           darktheme="true"
           leftalign="false"
-          className="vertical-padding-normal no-top inner-grid tablet-inner-grid4 desktop-inner-grid2"
+          className="vertical-padding-normal no-top inner-grid2 tablet-inner-grid4 desktop-inner-grid2"
           spacing="12rem"
         >
           <div className="container hidden">
@@ -783,6 +785,18 @@ export default function Home(props) {
             View Full Process
           </Button> */}
         </ThreeColSection>
+        <BasicTitleText
+          border="true"
+          center="true"
+          className="process-text outer-grid vertical-padding2 inner-grid desktop-inner-grid3"
+        >
+          <div className="title-container">
+            <Image className="icon" src={wiseIcon} alt="Wise Icon" />
+            <p className="small">Payments done securely through Wise</p>
+            <Image className="icon" src={slackIcon} alt="Slack Icon" />
+            <p className="small">Communication through email + Slack</p>
+          </div>
+        </BasicTitleText>
 
         <BasicTitleText center="true" className="outer-grid vertical-padding2">
           <div className="title-container">
@@ -879,6 +893,19 @@ export default function Home(props) {
             </div>
           </div>
         </Logobar>
+        <BasicTitleText
+          border="true"
+          center="true"
+          className="outer-grid vertical-padding2 desktop-inner-grid3"
+          style={{ marginBottom: "2rem" }}
+        >
+          <div className="title-container">
+            <p className="small">
+              All packages include free server hosting, .com domain, custom
+              graphics, SSL security and basic SEO{" "}
+            </p>
+          </div>
+        </BasicTitleText>
         <Button center="true" href="/pricing">
           View full pricing
         </Button>
@@ -912,12 +939,31 @@ MODALS
 MODALS */}
         <Modal isOpen={isCMSModalOpen} onClose={handleClose}>
           <h2 className="s1">What is a CMS?</h2>
-          <p>
+          <p className="small">
             A CMS, (short for <strong>Content Management System</strong>), is a
             tool that helps you easily create, edit, and manage content on your
             website without needing any assistance from us; for instance, it
             enables you to update articles, images, or product information on
             your website without having to know how to code.
+            <br></br>
+            <br></br>
+            We use{" "}
+            <strong>
+              <a
+                href="https://strapi.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  textDecoration: "underline",
+                  color: GlobalVariables.colours.lightpurple,
+                }}
+              >
+                Strapi
+              </a>
+            </strong>{" "}
+            as a CMS for our websites. Wordpress is also another popular CMS,
+            however we prefer Strapi as it is more modern and handles React
+            websites better.
           </p>
         </Modal>
       </div>

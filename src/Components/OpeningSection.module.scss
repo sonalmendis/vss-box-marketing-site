@@ -9,7 +9,7 @@ $grey: #8f9294;
   justify-content: center;
   align-items: center;
   transform: scale(2);
-  z-index: 3;
+  z-index: 2;
   position: relative;
   @keyframes scaleIn {
     from {
@@ -100,13 +100,17 @@ $grey: #8f9294;
         position: relative;
         width: 3vw;
         height: 3vw;
+        z-index: 5;
         transform-style: preserve-3d;
         transform: rotate(225deg) rotate3d(1, 1, 0, 0deg);
         @keyframes cubeRotate {
-          from {
+          0% {
             transform: rotate(225deg) rotate3d(1, 1, 0, 0deg);
           }
-          to {
+          50% {
+            transform: rotate(225deg) rotate3d(1, 1, 0, 180deg);
+          }
+          100% {
             transform: rotate(225deg) rotate3d(1, 1, 0, 360deg);
           }
         }
@@ -119,6 +123,7 @@ $grey: #8f9294;
           position: absolute;
           opacity: 1;
           display: flex;
+          z-index: 4;
           align-items: center;
           justify-content: center;
           @keyframes borderAppear {

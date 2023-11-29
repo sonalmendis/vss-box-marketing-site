@@ -119,7 +119,7 @@ const MockupSection = (props) => {
         centerMode={true}
         centerSlidePercentage={isPortrait ? 150 : 120}
         useKeyboardArrows={true}
-        swipeScrollTolerance={50}
+        swipeScrollTolerance={75}
         preventMovementUntilSwipeScrollTolerance={true}
         showArrows={true}
       >
