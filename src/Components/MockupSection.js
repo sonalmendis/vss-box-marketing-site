@@ -119,7 +119,7 @@ const MockupSection = (props) => {
         centerMode={true}
         centerSlidePercentage={isPortrait ? 150 : 120}
         useKeyboardArrows={true}
-        swipeScrollTolerance={75}
+        swipeScrollTolerance={100}
         preventMovementUntilSwipeScrollTolerance={true}
         showArrows={true}
       >
@@ -234,7 +234,7 @@ DWELLANT */}
           <div className="img-col">
             {isPortrait ? (
               <Image
-                quality={100}
+                quality={80}
                 src={dwellantMockupPort}
                 alt="InboxIQ Mockup"
                 sizes="85vw"
@@ -242,7 +242,7 @@ DWELLANT */}
               />
             ) : (
               <Image
-                quality={100}
+                quality={90}
                 src={dwellantMockupLand}
                 alt="Dwellant Mockup"
                 sizes="50vw"
@@ -316,7 +316,7 @@ DWELLANT */}
             {isPortrait ? (
               <Image
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
-                quality={100}
+                quality={80}
                 src={dayaMockupPortrait}
                 sizes="85vw"
                 alt="Daya Mockup"
@@ -324,7 +324,7 @@ DWELLANT */}
             ) : (
               <Image
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
-                quality={100}
+                quality={90}
                 src={dayaMockupLand}
                 sizes="50vw"
                 alt="Daya Mockup"
@@ -390,7 +390,7 @@ ROAR
             {isPortrait ? (
               <Image
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
-                quality={100}
+                quality={80}
                 src={roarMockupPortrait}
                 alt="Roar Mockup"
                 sizes="85vw"
@@ -398,7 +398,7 @@ ROAR
             ) : (
               <Image
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
-                quality={100}
+                quality={80}
                 src={roarMockLand}
                 alt="Roar Mockup"
                 sizes="50vw"
@@ -466,7 +466,7 @@ AAQILL
           <div className="img-col">
             {isPortrait ? (
               <Image
-                quality={100}
+                quality={80}
                 src={aaqillMokckupPortrait}
                 alt="Aaqill Mockup"
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
@@ -475,7 +475,7 @@ AAQILL
             ) : (
               <Image
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
-                quality={100}
+                quality={80}
                 src={aaqillMockupLand}
                 alt="Aaqill Mockup"
                 sizes="50vw"
@@ -547,7 +547,7 @@ MYNOTT
             {isPortrait ? (
               <Image
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
-                quality={100}
+                quality={80}
                 src={mynottMockPort}
                 alt="Mynott Mockup"
                 sizes="85vw"
@@ -555,7 +555,7 @@ MYNOTT
             ) : (
               <Image
                 loading={mockupSectionViewpointReached ? "eager" : "lazy"}
-                quality={100}
+                quality={80}
                 src={mynottMockLand}
                 alt="Mynott Mockup"
                 sizes="50vw"

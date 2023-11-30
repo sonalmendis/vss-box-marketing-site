@@ -198,7 +198,7 @@ export default function ContactForm(props) {
           </div>
           <div className="image-container">
             <Image
-              quality={100}
+              quality={95}
               src={contactBg}
               alt="Contact background"
               sizes="100vw"
