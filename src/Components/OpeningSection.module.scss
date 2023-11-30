@@ -527,9 +527,9 @@ $grey: #8f9294;
         width: 100%;
         top: 0;
         height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
         svg.outlinedCircle {
           height: 100vh;
           width: 100vw;
@@ -562,7 +562,9 @@ $grey: #8f9294;
             leftCircleExit 3s ease 4s forwards;
 
           @include gvars.laptop {
-            margin-right: 57vw;
+            margin-right: 0;
+            left: 12vw;
+            top: -2vh;
             width: 40vh;
           }
         }
