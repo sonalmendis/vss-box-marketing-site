@@ -1160,3 +1160,9 @@ MISC
     width: 5vw;
   }
 }
+
+.pause-animation {
+  * {
+    animation-play-state: paused !important;
+  }
+}

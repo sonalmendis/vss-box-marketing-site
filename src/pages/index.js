@@ -175,6 +175,22 @@ export default function Home(props) {
   });
 
   useEffect(() => {
+    // Handle the animation pause on tab change - INITIAL PAGE LOAD
+    if (document.visibilityState === "visible") {
+      document.querySelector("html").classList.remove("pause-animation");
+    } else {
+      document.querySelector("html").classList.add("pause-animation");
+    }
+
+    // Handle the animation pause on tab change - TAB CHANGE EVENT LISTENER
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") {
+        document.querySelector("html").classList.remove("pause-animation");
+      } else {
+        document.querySelector("html").classList.add("pause-animation");
+      }
+    });
+
     // Handle the intro animation and remove the event listener once the animation is done
     // Once animation is done, the hasAnimationPlayedOnce becomes true and the animation is frozen at the last frame if the user navigates between pages
     // Also makes the page scrollable once complete

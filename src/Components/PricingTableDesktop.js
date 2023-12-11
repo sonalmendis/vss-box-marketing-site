@@ -122,6 +122,7 @@ const PricingTableDesktopStyled = styled.div`
 
       &.first {
         > .inner-container {
+          align-items: start;
           h2.price-title {
             font-size: 1.4rem;
             margin-bottom: 0.5rem;
@@ -136,7 +137,8 @@ const PricingTableDesktopStyled = styled.div`
           .col {
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-rows: 1fr repeat(2, 2fr);
+            /* grid-template-rows: 1fr repeat(2, 2fr); */
+            grid-template-rows: auto;
             grid-column-gap: 0px;
             grid-row-gap: 0px;
             border: none;
@@ -145,7 +147,6 @@ const PricingTableDesktopStyled = styled.div`
             border-radius: 1rem;
             margin-right: 1rem;
             h2 {
-              align-self: end;
             }
           }
         }
@@ -272,7 +273,7 @@ const PricingTableDesktop = (props) => {
                   }}
                   onClick={handleOpen}
                 >
-                  What is a CMS?
+                  What is a content manager?
                 </p>
                 <p>{priceData && priceData[1].attributes.price_desc}</p>
               </div>

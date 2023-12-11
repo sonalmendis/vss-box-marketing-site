@@ -387,7 +387,7 @@ const Carousel2 = (props) => {
                   }}
                   onClick={handleOpen}
                 >
-                  What is a CMS?
+                  What is a content manager?
                 </p>
               </div>
               <div className="divider-row row">
