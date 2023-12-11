@@ -9,6 +9,8 @@ import { Gabarito, Poppins } from "next/font/google";
 import dynamic from "next/dynamic";
 import loader from "../../public/img/loader.svg";
 import Image from "next/image";
+import Script from "next/script";
+
 const ParallaxProvider = dynamic(
   () => import("@/Components/ParallaxProvider"),
   { ssr: false }
@@ -127,6 +129,56 @@ export default function App({ Component, pageProps }) {
       <main
         className={`${gabarito.variable} ${poppins.variable} ${LemonMilk.variable}`}
       >
+        {/* 
+        GOOGLE ANALYTICS
+        GOOGLE ANALYTICS
+        GOOGLE ANALYTICS
+        GOOGLE ANALYTICS
+        */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-C8X3MF9563"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-C8X3MF9563');
+        `}
+        </Script>
+
+        {/* 
+          FACEBOOK PIXEL
+          FACEBOOK PIXEL
+          FACEBOOK PIXEL
+          FACEBOOK PIXEL
+        */}
+
+        <Script id="facebook-analytics" strategy="lazyOnload">
+          {`
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1432716584341734');
+fbq('track', 'PageView');
+`}
+        </Script>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=1432716584341734&ev=PageView&noscript=1"
+          />
+        </noscript>
+
         <Header />
         <ParallaxProvider>
           <Component
