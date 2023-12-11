@@ -164,7 +164,7 @@ IDFK WHY BUT IT DOES SO I'M LEAVING IT AS IS
                 target="_blank"
                 refferer="no-referrer"
                 className={`${styles["meetingBtn"]}`}
-                href="https://cal.com/sonal-mendis-awdbhl/30min"
+                href="https://zcal.co/i/QfFFKLqF"
                 nospace="true"
                 size="small"
               >
@@ -209,7 +209,7 @@ IDFK WHY BUT IT DOES SO I'M LEAVING IT AS IS
                   type="2"
                   target="_blank"
                   refferer="no-referrer"
-                  href="https://cal.com/sonal-mendis-awdbhl/30min"
+                  href="https://zcal.co/i/QfFFKLqF"
                   className="vertical-padding2"
                 >
                   Book a meeting now!

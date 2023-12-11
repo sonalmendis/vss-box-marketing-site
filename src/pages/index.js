@@ -601,7 +601,7 @@ export default function Home(props) {
             target="_blank"
             refferer="no-referrer"
             center={isTablet ? true : false}
-            href="https://cal.com/sonal-mendis-awdbhl/30min"
+            href="https://zcal.co/i/QfFFKLqF"
             className="vertical-padding2"
           >
             Book a meeting now!

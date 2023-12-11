@@ -22,7 +22,7 @@ const Footer = (props) => {
               type="1"
               target="_blank"
               refferer="no-referrer"
-              href="https://cal.com/sonal-mendis-awdbhl/30min"
+              href="https://zcal.co/i/QfFFKLqF"
             >
               Book a meeting now!
             </Button>
