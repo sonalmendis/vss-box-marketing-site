@@ -130,6 +130,7 @@ const PricingTableDesktopStyled = styled.div`
           p {
             font-size: 0.9rem;
             line-height: 1.1rem;
+            margin-bottom: 1rem;
           }
           .col:first-child {
             background: ${GlobalVariables.colours.main};
@@ -146,8 +147,12 @@ const PricingTableDesktopStyled = styled.div`
             padding: 2rem;
             border-radius: 1rem;
             margin-right: 1rem;
+            display: block;
             h2 {
             }
+          }
+          .body-text-container {
+            margin-bottom: 1rem;
           }
         }
         .pro-container {

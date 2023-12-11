@@ -220,6 +220,14 @@ export default function Home(props) {
         }
       };
 
+      // Check if the <html> tag has overflowY set to scroll after 8 seconds (this is failsafe to make sure its scrollable after 8s)
+      setTimeout(() => {
+        if (htmlTag.style.position === "fixed") {
+          htmlTag.style.overflowY = "auto";
+          htmlTag.style.position = "static";
+        }
+      }, 8000);
+
       // Add the event listener to the intro animation container
       introAnimationContainer.addEventListener(
         "animationend",
