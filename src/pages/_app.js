@@ -189,21 +189,20 @@ fbq('track', 'PageView');
         </ParallaxProvider>
 
         {/* This is a preload div below, if its removed you end up seeing the footer first and get CLS */}
-        {process.env.NEXT_PUBLIC_INTRO_ANIMATION_ENABLED === "true" && (
-          <div
-            id="preloaderDiv"
-            style={{
-              background: "#090516",
-              height: "100vh",
-              width: "100vw",
-              display: hasAnimationPlayedOnce ? "none" : "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Image src={loader} alt="Loader" className="preloader-animation" />
-          </div>
-        )}
+
+        <div
+          id="preloaderDiv"
+          style={{
+            background: "#090516",
+            height: "100vh",
+            width: "100vw",
+            display: hasAnimationPlayedOnce ? "none" : "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image src={loader} alt="Loader" className="preloader-animation" />
+        </div>
 
         <Footer />
       </main>

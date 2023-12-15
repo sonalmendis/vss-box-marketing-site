@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive"; // A must for detecting responsivity
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Parallax, useParallax } from "react-scroll-parallax";
+import { TypeAnimation } from "react-type-animation";
 
 // IMAGES
 import backgroundPort from "../../public/img/background-portrait.png";
@@ -385,19 +386,40 @@ export default function Home(props) {
                     />
 
                     <div className={OpeningSectionStyles.centerText}>
-                      <h3
+                      {/* <h3
                         className={`${
                           hasAnimationPlayedOnce && "freezeAtLastFrame"
                         }`}
                       >
                         We Create
-                      </h3>
+                      </h3> */}
                       <h1
                         className={`${
                           hasAnimationPlayedOnce && "freezeAtLastFrame"
                         }`}
                       >
-                        Beautiful<br></br>Websites
+                        We Create
+                        <TypeAnimation
+                          sequence={[
+                            // Same substring at the start will only be typed out once, initially
+                            "Beautiful",
+                            1200, // wait 1s before replacing "Mice" with "Hamsters"
+                            "Functional",
+                            1200,
+                            "Modern",
+                            1200,
+                            "Responsive",
+                            1200,
+                          ]}
+                          wrapper="span"
+                          speed={75}
+                          style={{
+                            display: "block",
+                            marginLeft: "0.5rem",
+                          }}
+                          repeat={Infinity}
+                        ></TypeAnimation>
+                        Websites
                       </h1>
                     </div>
                   </div>

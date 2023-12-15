@@ -8,7 +8,7 @@ $grey: #8f9294;
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(2);
+  // transform: scale(2);
   z-index: 2;
   position: relative;
   @keyframes scaleIn {
@@ -22,7 +22,7 @@ $grey: #8f9294;
   backface-visibility: hidden;
 
   &.triggerScaleAnimation {
-    animation: scaleIn 3s ease-in-out 0.5s forwards;
+    // animation: scaleIn 3s ease-in-out 0.5s forwards;
   }
 
   .backgroundContainer {
@@ -281,7 +281,7 @@ $grey: #8f9294;
             animation: textReveal 1.5s ease-in-out 4s forwards;
           }
           .centerText {
-            margin-bottom: 5vh;
+            margin-bottom: 0vh;
             h1 {
               backface-visibility: hidden;
 

@@ -61,7 +61,7 @@ ${(props) => props.type === "outline" && `background: none;`}
         transform: scaleY(0);
       }
     }
-    animation: lineScale 2s infinite 5s;
+    animation: lineScale 2s infinite 0s;
   }
   .arrowhead {
     bottom: 0.25rem;
@@ -115,7 +115,7 @@ ${(props) => props.type === "outline" && `background: none;`}
       /* right: 0.35rem; */
       transform: rotate(-45deg) scaleY(0);
       transform-origin: bottom right;
-      animation: headLineScaleLeft 2s infinite 5s;
+      animation: headLineScaleLeft 2s infinite 0s;
     }
     .headLineRight {
       height: 0.5rem;
@@ -125,7 +125,7 @@ ${(props) => props.type === "outline" && `background: none;`}
       /* left: 0.2rem; */
       transform: rotate(45deg) scaleY(0);
       transform-origin: bottom left;
-      animation: headLineScaleRight 2s infinite 5s;
+      animation: headLineScaleRight 2s infinite 0s;
     }
   }
 `;
