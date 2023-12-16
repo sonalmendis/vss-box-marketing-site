@@ -81,6 +81,9 @@ export default function Home(props) {
   const disableOpeningAnimation =
     process.env.NEXT_PUBLIC_INTRO_ANIMATION_ENABLED === "true" ? false : true; // For development purposes
   const sethasAnimationPlayedOnce = props.sethasAnimationPlayedOnce;
+  if (disableOpeningAnimation == true) {
+    sethasAnimationPlayedOnce(true);
+  }
   const hasAnimationPlayedOnce = disableOpeningAnimation
     ? true
     : props.hasAnimationPlayedOnce;
